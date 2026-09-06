@@ -1,0 +1,454 @@
+// Esquema de base de datos — Plataforma ADACV
+//
+// Modela la jerarquía Temporada → Jornada → Competición → Resultado, con
+// Binomio (Guía + Perro + Club) como entidad de primer nivel, un motor de
+// reglas configurable por Temporada/Modalidad (ReglaModalidad, en vez de
+// constantes fijas en el código) y Clasificación como concepto separado de
+// Resultado, tal y como exige el PRD.
+//
+// Ver /docs/analisis-adacv.md (o el documento "Análisis previo" del
+// proyecto de Claude) para el razonamiento completo detrás de estas
+// decisiones.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enumerados
+// ---------------------------------------------------------------------------
+
+enum Rol {
+  ADMIN
+  SECRETARIA
+  EDITOR
+}
+
+enum NivelCompeticion {
+  NIVEL_II
+  NIVEL_III
+  PERFORMANCE
+}
+
+// Las 5 alturas oficiales del reglamento. La agrupación en 4 categorías
+// (Mini = MINI1+MINI2, Media, Maxi, Large) se calcula en código
+// (ver src/lib/rules/categorias.ts) en vez de duplicarse como dato.
+enum Talla {
+  MINI1
+  MINI2
+  MEDIA
+  MAXI
+  LARGE
+}
+
+// Agrupación de Talla a efectos de CLASIFICACIÓN (el reglamento junta
+// Mini 1 + Mini 2 en una sola categoría "Mini"). Los obstáculos y la
+// altura de salto siguen usando las 5 alturas de `Talla`; solo la
+// clasificación de temporada usa esta agrupación de 4.
+enum CategoriaTalla {
+  MINI
+  MEDIA
+  MAXI
+  LARGE
+}
+
+enum Modalidad {
+  AGILITY_STANDARD
+  JUMPING
+  JUMPING_RELEVOS
+  KO
+  STEEPLECHASE
+  DEDALO
+}
+
+enum EstadoJornada {
+  BORRADOR
+  PUBLICADA
+}
+
+enum EstadoClasificacion {
+  PENDIENTE
+  REVISADA
+  PUBLICADA
+  BLOQUEADA
+}
+
+enum Calificacion {
+  EXCELENTE
+  MUY_BUENO
+  BUENO
+  SUFICIENTE
+  NO_CALIFICADO
+  ELIMINADO
+}
+
+// ---------------------------------------------------------------------------
+// Usuarios / backoffice
+// ---------------------------------------------------------------------------
+
+model Usuario {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  nombre       String
+  rol          Rol      @default(SECRETARIA)
+  activo       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("usuarios")
+}
+
+// ---------------------------------------------------------------------------
+// Temporadas y motor de reglas configurable
+// ---------------------------------------------------------------------------
+
+model Temporada {
+  id          String   @id @default(cuid())
+  nombre      String   @unique // ej. "2025/2026"
+  fechaInicio DateTime
+  fechaFin    DateTime
+  activa      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  jornadas               Jornada[]
+  reglas                 ReglaModalidad[]
+  clasificaciones        ClasificacionTemporada[]
+  binomiosTemporada      BinomioTemporada[]
+
+  @@map("temporadas")
+}
+
+// Parámetros del motor de penalizaciones por Temporada + Modalidad.
+// Sustituye las constantes fijas (PenaltyPerFault = 5.0, etc.) del
+// proyecto de referencia AgilityScore: aquí son datos, no código, y
+// pueden cambiar de una temporada a otra sin tocar el motor de reglas.
+model ReglaModalidad {
+  id          String    @id @default(cuid())
+  temporadaId String
+  temporada   Temporada @relation(fields: [temporadaId], references: [id], onDelete: Cascade)
+  modalidad   Modalidad
+
+  // Penalizaciones base (puntos)
+  penalizacionFalta      Float @default(5)
+  penalizacionRehuse     Float @default(5)
+  penalizacionPorSegundo Float @default(1)
+  penalizacionEliminacion Float @default(50)
+
+  // Causa de eliminación por acumulación de rehúses (reglamento: al 3er
+  // rehúse se elimina, con independencia del número de faltas).
+  rehusesParaEliminar Int @default(3)
+
+  // Factor TRM = TRS × factor, acotado entre estos dos límites.
+  trmFactorMin Float @default(1.5)
+  trmFactorMax Float @default(2.0)
+
+  // Bandas de calificación por manga, en función de la penalización total.
+  // Array de { nombre: Calificacion, max: number | null } evaluado en orden;
+  // "max: null" es la banda catch-all (No Calificado). Se guarda como JSON
+  // para que cada temporada pueda ajustar los cortes sin migrar el esquema.
+  // Ejemplo (valores oficiales agosto 2025):
+  // [
+  //   { "nombre": "EXCELENTE",     "max": 5   },
+  //   { "nombre": "MUY_BUENO",     "max": 10  },
+  //   { "nombre": "BUENO",         "max": 15  },
+  //   { "nombre": "SUFICIENTE",    "max": 25  },
+  //   { "nombre": "NO_CALIFICADO", "max": null}
+  // ]
+  bandasCalificacion Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([temporadaId, modalidad])
+  @@map("reglas_modalidad")
+}
+
+// ---------------------------------------------------------------------------
+// Clubes, jueces, guías, perros, binomios
+// ---------------------------------------------------------------------------
+
+model Club {
+  id        String   @id @default(cuid())
+  nombre    String
+  poblacion String?
+  provincia String?
+  logoUrl   String?
+  web       String?
+  activo    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  guias     Guia[]
+  binomios  Binomio[]
+  jornadas  Jornada[]
+
+  @@map("clubes")
+}
+
+model Juez {
+  id       String  @id @default(cuid())
+  nombre   String
+  licencia String?
+  fotoUrl  String?
+  activo   Boolean @default(true)
+
+  jornadas     Jornada[]
+  competiciones Competicion[]
+
+  @@map("jueces")
+}
+
+model Guia {
+  id        String  @id @default(cuid())
+  nombre    String
+  apellidos String
+  licencia  String?
+  clubId    String?
+  club      Club?   @relation(fields: [clubId], references: [id])
+
+  binomios Binomio[]
+
+  @@map("guias")
+}
+
+model Perro {
+  id              String    @id @default(cuid())
+  nombre          String
+  raza            String?
+  tallaCm         Float?
+  talla           Talla
+  fechaNacimiento DateTime?
+
+  binomios Binomio[]
+
+  @@map("perros")
+}
+
+// Identidad estable Guía + Perro + Club a lo largo de temporadas.
+model Binomio {
+  id       String  @id @default(cuid())
+  guiaId   String
+  guia     Guia    @relation(fields: [guiaId], references: [id])
+  perroId  String
+  perro    Perro   @relation(fields: [perroId], references: [id])
+  clubId   String?
+  club     Club?   @relation(fields: [clubId], references: [id])
+  activo   Boolean @default(true)
+
+  temporadas          BinomioTemporada[]
+  resultados          Resultado[]
+  clasificaciones     ClasificacionEntrada[]
+
+  @@unique([guiaId, perroId])
+  @@map("binomios")
+}
+
+// Nivel y puntos acumulados de un binomio EN una temporada concreta
+// (el nivel puede subir/bajar de una temporada a otra por ascensos/descensos).
+model BinomioTemporada {
+  id                  String           @id @default(cuid())
+  binomioId           String
+  binomio             Binomio          @relation(fields: [binomioId], references: [id])
+  temporadaId         String
+  temporada           Temporada        @relation(fields: [temporadaId], references: [id])
+  nivel               NivelCompeticion
+  pruebasDisputadas   Int              @default(0)
+  puntosAcumulados    Float            @default(0)
+
+  @@unique([binomioId, temporadaId])
+  @@map("binomios_temporada")
+}
+
+// ---------------------------------------------------------------------------
+// Jornadas y competiciones
+// ---------------------------------------------------------------------------
+
+model Jornada {
+  id          String        @id @default(cuid())
+  temporadaId String
+  temporada   Temporada     @relation(fields: [temporadaId], references: [id])
+  clubId      String?
+  club        Club?         @relation(fields: [clubId], references: [id])
+  juezId      String?
+  juez        Juez?         @relation(fields: [juezId], references: [id])
+
+  nombre      String
+  fecha       DateTime
+  lugar       String?
+  descripcion String?
+  estado      EstadoJornada @default(BORRADOR)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  competiciones Competicion[]
+  galerias      Galeria[]
+
+  @@map("jornadas")
+}
+
+// Una "manga" concreta: modalidad + nivel + talla dentro de una jornada.
+model Competicion {
+  id         String           @id @default(cuid())
+  jornadaId  String
+  jornada    Jornada          @relation(fields: [jornadaId], references: [id], onDelete: Cascade)
+  modalidad  Modalidad
+  nivel      NivelCompeticion
+  talla      Talla
+  manga      Int              @default(1)
+  juezId     String?
+  juez       Juez?            @relation(fields: [juezId], references: [id])
+
+  // Parámetros para calcular TRS/TRM (ver src/lib/rules/tiempo.ts).
+  // TRS = longitudM / velocidadMs + tiempoParadaMesaS
+  // TRM = TRS × trmFactor (acotado por ReglaModalidad.trmFactorMin/Max)
+  longitudM         Float?
+  velocidadMs       Float?
+  tiempoParadaMesaS Float   @default(0)
+  trmFactor         Float   @default(1.5)
+
+  createdAt DateTime @default(now())
+
+  resultados Resultado[]
+
+  @@map("competiciones")
+}
+
+// ---------------------------------------------------------------------------
+// Resultados (por manga) y Clasificación (por temporada) — conceptos
+// deliberadamente separados, tal como exige el PRD.
+// ---------------------------------------------------------------------------
+
+model Resultado {
+  id            String       @id @default(cuid())
+  competicionId String
+  competicion   Competicion  @relation(fields: [competicionId], references: [id], onDelete: Cascade)
+  binomioId     String
+  binomio       Binomio      @relation(fields: [binomioId], references: [id])
+
+  dorsal   Int?
+  tiempoS  Float?
+  faltas   Int     @default(0)
+  rehuses  Int     @default(0)
+  eliminado         Boolean @default(false)
+  motivoEliminacion String?
+
+  // Campos calculados por el motor de reglas (src/lib/rules/engine.ts) y
+  // almacenados para lectura rápida; siempre recalculables a partir de los
+  // datos crudos de arriba + la ReglaModalidad vigente.
+  penalizacionTiempo Float?
+  penalizacionTotal  Float?
+  calificacion       Calificacion?
+
+  publicado Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([competicionId, binomioId])
+  @@map("resultados")
+}
+
+// Estado de la clasificación de una Temporada+Nivel+Talla — flujo propio
+// (pendiente → revisada → publicada, o bloqueada) independiente de la
+// publicación de resultados de cada jornada.
+model ClasificacionTemporada {
+  id          String              @id @default(cuid())
+  temporadaId String
+  temporada   Temporada           @relation(fields: [temporadaId], references: [id])
+  nivel       NivelCompeticion
+  categoria   CategoriaTalla
+  estado      EstadoClasificacion @default(PENDIENTE)
+  actualizadaEn DateTime          @default(now())
+  publicadaEn   DateTime?
+
+  entradas ClasificacionEntrada[]
+
+  @@unique([temporadaId, nivel, categoria])
+  @@map("clasificaciones_temporada")
+}
+
+model ClasificacionEntrada {
+  id                       String                 @id @default(cuid())
+  clasificacionTemporadaId String
+  clasificacionTemporada   ClasificacionTemporada @relation(fields: [clasificacionTemporadaId], references: [id], onDelete: Cascade)
+  binomioId                String
+  binomio                  Binomio                @relation(fields: [binomioId], references: [id])
+
+  posicion          Int
+  puntos            Float
+  pruebasDisputadas Int
+  tendencia         Int    @default(0) // -1 baja, 0 igual, 1 sube (vs. cálculo anterior)
+
+  @@unique([clasificacionTemporadaId, binomioId])
+  @@map("clasificacion_entradas")
+}
+
+// ---------------------------------------------------------------------------
+// Contenido: galerías, noticias, patrocinadores, documentos
+// ---------------------------------------------------------------------------
+
+model Galeria {
+  id          String   @id @default(cuid())
+  jornadaId   String?
+  jornada     Jornada? @relation(fields: [jornadaId], references: [id])
+  titulo      String
+  fecha       DateTime
+  descripcion String?
+  createdAt   DateTime @default(now())
+
+  fotos Foto[]
+
+  @@map("galerias")
+}
+
+model Foto {
+  id        String   @id @default(cuid())
+  galeriaId String
+  galeria   Galeria  @relation(fields: [galeriaId], references: [id], onDelete: Cascade)
+  url       String
+  caption   String?
+  orden     Int      @default(0)
+
+  @@map("fotos")
+}
+
+model Noticia {
+  id          String    @id @default(cuid())
+  titulo      String
+  slug        String    @unique
+  resumen     String
+  contenido   String
+  portadaUrl  String?
+  autor       String?
+  publicadoEn DateTime  @default(now())
+  createdAt   DateTime  @default(now())
+
+  @@map("noticias")
+}
+
+model Sponsor {
+  id      String  @id @default(cuid())
+  nombre  String
+  logoUrl String
+  url     String?
+  nivel   String  @default("Colaborador") // ej. Oro / Plata / Colaborador
+  activo  Boolean @default(true)
+  orden   Int     @default(0)
+
+  @@map("sponsors")
+}
+
+model Documento {
+  id                String   @id @default(cuid())
+  titulo            String
+  categoria         String // ej. "reglamento", "formulario", "acta"
+  url               String
+  fechaPublicacion  DateTime @default(now())
+
+  @@map("documentos")
+}
