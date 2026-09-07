@@ -3,9 +3,10 @@ import { getJornadaConTodo, getBinomiosActivos } from "@/lib/data/backoffice";
 import { getClubesActivos, getJueces } from "@/lib/data/public";
 import { JornadaWizard } from "./jornada-wizard";
 
-export default async function JornadaPage({ params }: { params: { id: string } }) {
+export default async function JornadaPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const [jornada, binomios, clubes, jueces] = await Promise.all([
-    getJornadaConTodo(params.id),
+    getJornadaConTodo(id),
     getBinomiosActivos(),
     getClubesActivos(),
     getJueces(),

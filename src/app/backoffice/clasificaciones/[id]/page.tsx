@@ -7,8 +7,9 @@ const ETIQUETA_CATEGORIA: Record<string, string> = Object.fromEntries(
   CATEGORIAS_TALLA.map((c) => [c.value, c.label])
 );
 
-export default async function ClasificacionDetallePage({ params }: { params: { id: string } }) {
-  const clasificacion = await getClasificacionConEntradas(params.id);
+export default async function ClasificacionDetallePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const clasificacion = await getClasificacionConEntradas(id);
   if (!clasificacion) notFound();
 
   return (

@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getGaleriaConFotos } from "@/lib/data/public";
 
-export default async function GaleriaDetallePage({ params }: { params: { id: string } }) {
-  const galeria = await getGaleriaConFotos(params.id);
+export default async function GaleriaDetallePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const galeria = await getGaleriaConFotos(id);
   if (!galeria) notFound();
 
   return (

@@ -12,6 +12,7 @@ import {
   publicarJornadaAction,
   despublicarJornadaAction,
   actualizarDatosJornadaAction,
+  eliminarJornadaAction,
 } from "@/app/actions/jornadas";
 import { MODALIDADES, NIVELES, TALLAS, ETIQUETA_MODALIDAD, ETIQUETA_NIVEL, ETIQUETA_TALLA_CORTA, ETIQUETA_CALIFICACION, ESTILO_CALIFICACION } from "@/lib/constants";
 
@@ -36,7 +37,11 @@ export function JornadaWizard({
   const [paso, setPaso] = useState(1);
   const [maxPaso, setMaxPaso] = useState(1);
   const [revisado, setRevisado] = useState(false);
-  const [editandoDatos, setEditandoDatos] = useState(false);
+  // Los huecos de jornada generados al crear la temporada empiezan sin
+  // configurar (fecha/lugar todavía son un valor provisional): se abre el
+  // formulario de datos directamente para que secretaría los rellene antes
+  // de ver nada más del asistente.
+  const [editandoDatos, setEditandoDatos] = useState(!jornada.configurada);
 
   const totalResultados = jornada.competiciones.reduce((acc, c) => acc + c.resultados.length, 0);
 
@@ -55,16 +60,33 @@ export function JornadaWizard({
           </Link>
           <h1 className="text-2xl font-semibold">{jornada.nombre}</h1>
         </div>
-        <span
-          className={`chip ${
-            jornada.estado === "PUBLICADA"
-              ? "bg-success/10 text-success border-success/20"
-              : "bg-black/5 text-black/60 border-black/10"
-          }`}
-        >
-          {jornada.estado === "PUBLICADA" ? "Publicada" : "Borrador"}
-        </span>
+        <div className="flex items-center gap-3">
+          <span
+            className={`chip ${
+              jornada.estado === "PUBLICADA"
+                ? "bg-success/10 text-success border-success/20"
+                : "bg-black/5 text-black/60 border-black/10"
+            }`}
+          >
+            {jornada.estado === "PUBLICADA" ? "Publicada" : "Borrador"}
+          </span>
+          {jornada.estado !== "PUBLICADA" ? (
+            <form action={eliminarJornadaAction}>
+              <input type="hidden" name="jornadaId" value={jornada.id} />
+              <button type="submit" className="text-danger text-sm hover:underline">
+                Borrar jornada
+              </button>
+            </form>
+          ) : null}
+        </div>
       </div>
+
+      {!jornada.configurada ? (
+        <p className="text-sm text-black/60 bg-black/5 border border-black/10 rounded-lg px-4 py-2 mb-4">
+          Esta jornada todavía no está configurada: rellena su fecha y lugar reales en el paso 1
+          antes de continuar.
+        </p>
+      ) : null}
 
       <ol className="flex flex-wrap gap-2 my-6">
         {PASOS.map((label, i) => {
@@ -201,9 +223,11 @@ function PasoDatos({
           <button type="submit" className="btn-primary">
             Guardar
           </button>
-          <button type="button" onClick={() => setEditando(false)} className="btn-secondary">
-            Cancelar
-          </button>
+          {jornada.configurada ? (
+            <button type="button" onClick={() => setEditando(false)} className="btn-secondary">
+              Cancelar
+            </button>
+          ) : null}
         </div>
       </form>
     );

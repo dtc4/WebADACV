@@ -58,8 +58,13 @@ export default async function DashboardPage() {
                     <Link href={`/backoffice/jornadas/${j.id}`} className="font-medium hover:underline">
                       {j.nombre}
                     </Link>
+                    {!j.configurada ? (
+                      <span className="chip ml-2 bg-black/5 text-black/50 border-black/10">Sin configurar</span>
+                    ) : null}
                   </td>
-                  <td className="py-2 pr-4">{new Date(j.fecha).toLocaleDateString("es-ES")}</td>
+                  <td className="py-2 pr-4">
+                    {j.configurada ? new Date(j.fecha).toLocaleDateString("es-ES") : "—"}
+                  </td>
                   <td className="py-2 pr-4">{j.club?.nombre ?? "—"}</td>
                   <td className="py-2 pr-4">{j._count.competiciones}</td>
                   <td className="py-2 pr-4">

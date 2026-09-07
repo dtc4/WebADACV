@@ -39,6 +39,10 @@ body {
   @apply btn text-brand-ink hover:bg-black/5;
 }
 
+.btn-danger {
+  @apply btn bg-danger text-white hover:bg-danger/90;
+}
+
 .btn:disabled {
   @apply opacity-40 cursor-not-allowed hover:bg-transparent;
 }

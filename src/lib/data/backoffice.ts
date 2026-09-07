@@ -17,7 +17,24 @@ export function getJornadasTemporada(temporadaId: string) {
   return prisma.jornada.findMany({
     where: { temporadaId },
     include: { club: true, juez: true, _count: { select: { competiciones: true } } },
-    orderBy: { fecha: "desc" },
+    // Las jornadas generadas al crear la temporada comparten una fecha
+    // provisional hasta que se configuran, así que ordenar por número de
+    // jornada (y luego por fecha para las que no tienen número) es lo que
+    // realmente refleja el calendario planificado.
+    orderBy: [{ numero: "asc" }, { fecha: "desc" }],
+  });
+}
+
+export function getTemporadaPorId(temporadaId: string) {
+  return prisma.temporada.findUnique({ where: { id: temporadaId } });
+}
+
+/** Huecos de jornada de una temporada que todavía no se han configurado
+ * (usado por "Nueva jornada" para ofrecer solo los que quedan por rellenar). */
+export function getJornadasPendientesTemporada(temporadaId: string) {
+  return prisma.jornada.findMany({
+    where: { temporadaId, configurada: false },
+    orderBy: [{ numero: "asc" }, { fecha: "asc" }],
   });
 }
 

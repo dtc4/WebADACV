@@ -3,8 +3,9 @@ import Link from "next/link";
 import { getJornadaPublicaConResultados } from "@/lib/data/public";
 import { ETIQUETA_MODALIDAD, ETIQUETA_NIVEL, ETIQUETA_TALLA_CORTA, ETIQUETA_CALIFICACION, ESTILO_CALIFICACION } from "@/lib/constants";
 
-export default async function JornadaPublicaPage({ params }: { params: { id: string } }) {
-  const jornada = await getJornadaPublicaConResultados(params.id);
+export default async function JornadaPublicaPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const jornada = await getJornadaPublicaConResultados(id);
   if (!jornada) notFound();
 
   return (

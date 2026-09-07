@@ -1,12 +1,13 @@
 import { loginAction } from "@/app/actions/auth";
 
-export default function LoginPage({
+export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: { next?: string; error?: string };
+  searchParams: Promise<{ next?: string; error?: string }>;
 }) {
-  const next = searchParams?.next ?? "/backoffice/dashboard";
-  const error = searchParams?.error;
+  const params = await searchParams;
+  const next = params?.next ?? "/backoffice/dashboard";
+  const error = params?.error;
 
   return (
     <div className="w-full max-w-sm">

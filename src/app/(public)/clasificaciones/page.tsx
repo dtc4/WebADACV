@@ -6,11 +6,12 @@ import type { CategoriaTalla, NivelCompeticion } from "@prisma/client";
 export default async function ClasificacionesPublicasPage({
   searchParams,
 }: {
-  searchParams: { nivel?: string; categoria?: string };
+  searchParams: Promise<{ nivel?: string; categoria?: string }>;
 }) {
+  const params = await searchParams;
   const temporada = await getTemporadaActiva();
-  const nivel = (searchParams?.nivel ?? "NIVEL_III") as NivelCompeticion;
-  const categoria = (searchParams?.categoria ?? "MEDIA") as CategoriaTalla;
+  const nivel = (params?.nivel ?? "NIVEL_III") as NivelCompeticion;
+  const categoria = (params?.categoria ?? "MEDIA") as CategoriaTalla;
 
   const clasificacion = temporada
     ? await getClasificacionPublicada(temporada.id, nivel, categoria)

@@ -109,12 +109,19 @@ model Usuario {
 // ---------------------------------------------------------------------------
 
 model Temporada {
-  id          String   @id @default(cuid())
-  nombre      String   @unique // ej. "2025/2026"
-  fechaInicio DateTime
-  fechaFin    DateTime
-  activa      Boolean  @default(false)
-  createdAt   DateTime @default(now())
+  id             String   @id @default(cuid())
+  nombre         String   @unique // ej. "2025/2026"
+  fechaInicio    DateTime
+  fechaFin       DateTime
+  // Número de jornadas planificadas para la temporada, decidido al crearla.
+  // Al crear la temporada se generan automáticamente esas N jornadas vacías
+  // (Jornada 1..N) para que secretaría solo tenga que elegir una y rellenar
+  // sus datos, en vez de crearlas una a una desde cero. Nullable porque las
+  // temporadas antiguas (creadas antes de esta función, p. ej. por el script
+  // de seed) no tienen por qué tener un número planificado.
+  numeroJornadas Int?
+  activa         Boolean  @default(false)
+  createdAt      DateTime @default(now())
 
   jornadas               Jornada[]
   reglas                 ReglaModalidad[]
@@ -277,11 +284,26 @@ model Jornada {
   juezId      String?
   juez        Juez?         @relation(fields: [juezId], references: [id])
 
+  // Posición de esta jornada dentro del calendario planificado de la
+  // temporada (1, 2, 3...). Se asigna al generar los huecos de jornada al
+  // crear la temporada; nullable porque una jornada añadida a mano fuera
+  // del plan original (o una jornada antigua de antes de esta función) no
+  // tiene por qué tener un número. Postgres permite varios NULL bajo un
+  // índice único, así que conviven sin problema con las numeradas.
+  numero      Int?
+
   nombre      String
   fecha       DateTime
   lugar       String?
   descripcion String?
   estado      EstadoJornada @default(BORRADOR)
+
+  // false mientras la jornada es solo un "hueco" generado automáticamente
+  // (fecha/lugar todavía son un valor provisional); pasa a true en cuanto
+  // secretaría guarda sus datos reales (ver actualizarDatosJornadaAction).
+  // Por defecto true, para que las jornadas creadas a mano (o antes de esta
+  // función) no aparezcan como "pendientes de configurar" sin motivo.
+  configurada Boolean       @default(true)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -289,6 +311,7 @@ model Jornada {
   competiciones Competicion[]
   galerias      Galeria[]
 
+  @@unique([temporadaId, numero])
   @@map("jornadas")
 }
 

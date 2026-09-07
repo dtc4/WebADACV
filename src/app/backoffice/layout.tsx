@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const NAV = [
   { href: "/backoffice/dashboard", label: "Panel" },
+  { href: "/backoffice/temporadas", label: "Temporadas" },
   { href: "/backoffice/jornadas/nueva", label: "Nueva jornada" },
   { href: "/backoffice/clasificaciones", label: "Clasificaciones" },
 ];

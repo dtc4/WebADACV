@@ -16,37 +16,12 @@ function requireSession() {
 }
 
 // --- Datos de la jornada -----------------------------------------------------
-
-export async function crearJornadaAction(formData: FormData) {
-  const session = await requireSession();
-  if (!session) redirect("/backoffice/login");
-
-  const temporadaId = String(formData.get("temporadaId") ?? "");
-  const nombre = String(formData.get("nombre") ?? "").trim();
-  const fecha = String(formData.get("fecha") ?? "");
-  const lugar = String(formData.get("lugar") ?? "").trim() || null;
-  const descripcion = String(formData.get("descripcion") ?? "").trim() || null;
-  const clubId = String(formData.get("clubId") ?? "") || null;
-  const juezId = String(formData.get("juezId") ?? "") || null;
-
-  if (!temporadaId || !nombre || !fecha) {
-    throw new Error("Faltan campos obligatorios: temporada, nombre y fecha.");
-  }
-
-  const jornada = await prisma.jornada.create({
-    data: {
-      temporadaId,
-      nombre,
-      fecha: new Date(fecha),
-      lugar,
-      descripcion,
-      clubId,
-      juezId,
-    },
-  });
-
-  redirect(`/backoffice/jornadas/${jornada.id}`);
-}
+//
+// Ya no existe una creación de jornada "libre": las jornadas se generan como
+// huecos vacíos al crear la Temporada (ver src/app/actions/temporadas.ts) y
+// secretaría elige uno desde /backoffice/jornadas/nueva. Esta acción rellena
+// (o edita más adelante) los datos reales de esa jornada, y es la que marca
+// `configurada = true` la primera vez que se guarda.
 
 export async function actualizarDatosJornadaAction(formData: FormData) {
   await requireSession();
@@ -58,14 +33,18 @@ export async function actualizarDatosJornadaAction(formData: FormData) {
   const clubId = String(formData.get("clubId") ?? "") || null;
   const juezId = String(formData.get("juezId") ?? "") || null;
 
-  if (!jornadaId) throw new Error("Falta el identificador de la jornada.");
+  if (!jornadaId || !nombre || !fecha) {
+    throw new Error("Faltan campos obligatorios: nombre y fecha.");
+  }
 
   await prisma.jornada.update({
     where: { id: jornadaId },
-    data: { nombre, fecha: new Date(fecha), lugar, descripcion, clubId, juezId },
+    data: { nombre, fecha: new Date(fecha), lugar, descripcion, clubId, juezId, configurada: true },
   });
 
   revalidatePath(`/backoffice/jornadas/${jornadaId}`);
+  revalidatePath("/backoffice/dashboard");
+  revalidatePath("/backoffice/jornadas/nueva");
 }
 
 // --- Competiciones -----------------------------------------------------------
@@ -240,4 +219,26 @@ export async function despublicarJornadaAction(formData: FormData) {
   ]);
 
   revalidatePath(`/backoffice/jornadas/${jornadaId}`);
+}
+
+/** Borra una jornada (y en cascada sus competiciones y resultados). No se
+ * permite borrar una jornada publicada directamente: hay que despublicarla
+ * primero, para que nadie borre por error una jornada cuyos resultados ya
+ * son visibles en la web pública. */
+export async function eliminarJornadaAction(formData: FormData) {
+  await requireSession();
+  const jornadaId = String(formData.get("jornadaId") ?? "");
+  if (!jornadaId) throw new Error("Falta el identificador de la jornada.");
+
+  const jornada = await prisma.jornada.findUniqueOrThrow({ where: { id: jornadaId } });
+  if (jornada.estado === "PUBLICADA") {
+    throw new Error("No se puede borrar una jornada publicada. Despublícala primero.");
+  }
+
+  await prisma.jornada.delete({ where: { id: jornadaId } });
+
+  revalidatePath("/backoffice/dashboard");
+  revalidatePath("/backoffice/jornadas/nueva");
+  revalidatePath(`/backoffice/temporadas/${jornada.temporadaId}`);
+  redirect(`/backoffice/temporadas/${jornada.temporadaId}`);
 }

@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getNoticiaPorSlug } from "@/lib/data/public";
 
-export default async function NoticiaPage({ params }: { params: { slug: string } }) {
-  const noticia = await getNoticiaPorSlug(params.slug);
+export default async function NoticiaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const noticia = await getNoticiaPorSlug(slug);
   if (!noticia) notFound();
 
   return (
