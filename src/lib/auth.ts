@@ -31,9 +31,18 @@ export function verifyPassword(password: string, stored: string): boolean {
 
 // --- Cookie de sesión --------------------------------------------------------
 
-/** Solo se puede llamar desde un Server Action o un Route Handler. */
-export function setSessionCookie(token: string) {
-  cookies().set(SESSION_COOKIE_NAME, token, {
+/** Solo se puede llamar desde un Server Action o un Route Handler.
+ *
+ * Nota: usamos `await cookies()` aunque en Next 14 la documentación oficial
+ * dice que `cookies()` es síncrona (solo pasó a ser asíncrona oficialmente
+ * en Next 15) — en la práctica, el parche de seguridad 14.2.35 cambió el
+ * valor devuelto internamente (algunas instalaciones ven un objeto normal,
+ * otras una promesa). `await` sobre un valor que no es una promesa no hace
+ * nada raro, así que esta forma funciona en ambos casos y es la misma que
+ * recomienda la documentación de Next 15 por compatibilidad futura. */
+export async function setSessionCookie(token: string) {
+  const cookieStore = await cookies();
+  cookieStore.set(SESSION_COOKIE_NAME, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
@@ -43,12 +52,14 @@ export function setSessionCookie(token: string) {
 }
 
 /** Solo se puede llamar desde un Server Action o un Route Handler. */
-export function clearSessionCookie() {
-  cookies().delete(SESSION_COOKIE_NAME);
+export async function clearSessionCookie() {
+  const cookieStore = await cookies();
+  cookieStore.delete(SESSION_COOKIE_NAME);
 }
 
 /** Se puede llamar desde Server Components, Server Actions y Route Handlers. */
 export async function getSession(): Promise<SessionPayload | null> {
-  const token = cookies().get(SESSION_COOKIE_NAME)?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get(SESSION_COOKIE_NAME)?.value;
   return verifySessionToken(token);
 }

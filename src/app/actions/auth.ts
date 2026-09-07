@@ -40,12 +40,12 @@ export async function loginAction(formData: FormData) {
     nombre: usuario.nombre,
     rol: usuario.rol,
   });
-  setSessionCookie(token);
+  await setSessionCookie(token);
 
   redirect(next.startsWith("/backoffice") ? next : "/backoffice/dashboard");
 }
 
 export async function logoutAction() {
-  clearSessionCookie();
+  await clearSessionCookie();
   redirect("/backoffice/login");
 }
