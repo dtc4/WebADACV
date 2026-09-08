@@ -12,6 +12,7 @@ const NAV = [
   { href: "/backoffice/temporadas", label: "Temporadas" },
   { href: "/backoffice/jornadas/nueva", label: "Nueva jornada" },
   { href: "/backoffice/clasificaciones", label: "Clasificaciones" },
+  { href: "/backoffice/entidades", label: "Clubes / jueces / binomios" },
 ];
 
 export default async function BackofficeLayout({ children }: { children: React.ReactNode }) {

@@ -416,7 +416,18 @@ function PasoResultados({
   onAtras: () => void;
 }) {
   const [competicionActivaId, setCompeticionActivaId] = useState(jornada.competiciones[0]?.id ?? "");
+  const [mostrarTodasTallas, setMostrarTodasTallas] = useState(false);
   const competicionActiva = jornada.competiciones.find((c) => c.id === competicionActivaId);
+
+  // La talla de la competición ya fija qué binomios pueden correrla (un
+  // perro solo compite en la talla que tiene asignada), así que por
+  // defecto se filtra el desplegable para no obligar a buscar entre todos
+  // los binomios de la temporada. "Mostrar todos" queda como escape por si
+  // hace falta (p. ej. un perro con la talla mal puesta todavía).
+  const binomiosDeLaTalla = competicionActiva
+    ? binomios.filter((b) => b.perro.talla === competicionActiva.talla)
+    : binomios;
+  const binomiosOpciones = mostrarTodasTallas ? binomios : binomiosDeLaTalla;
 
   if (jornada.competiciones.length === 0) {
     return (
@@ -513,16 +524,30 @@ function PasoResultados({
               <input type="hidden" name="competicionId" value={competicionActiva.id} />
               <input type="hidden" name="jornadaId" value={jornada.id} />
               <label className="block col-span-2">
-                <span className="block text-sm font-medium mb-1">Binomio</span>
+                <span className="block text-sm font-medium mb-1">
+                  Binomio{" "}
+                  <span className="font-normal text-black/40">
+                    ({ETIQUETA_TALLA_CORTA[competicionActiva.talla]})
+                  </span>
+                </span>
                 <select name="binomioId" required className="input">
                   <option value="">— Selecciona —</option>
-                  {binomios.map((b) => (
+                  {binomiosOpciones.map((b) => (
                     <option key={b.id} value={b.id}>
                       {b.guia.nombre} {b.guia.apellidos} · {b.perro.nombre}
                       {b.club ? ` (${b.club.nombre})` : ""}
                     </option>
                   ))}
                 </select>
+                {!mostrarTodasTallas && binomiosDeLaTalla.length < binomios.length ? (
+                  <button
+                    type="button"
+                    onClick={() => setMostrarTodasTallas(true)}
+                    className="text-xs text-brand-blue hover:underline mt-1"
+                  >
+                    No encuentro el binomio — mostrar de todas las tallas
+                  </button>
+                ) : null}
               </label>
               <label className="block">
                 <span className="block text-sm font-medium mb-1">Dorsal</span>

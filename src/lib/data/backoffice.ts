@@ -87,6 +87,83 @@ export function getClasificacionConEntradas(id: string) {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Clubes, jueces, guías, perros, binomios (fichas del backoffice)
+// ---------------------------------------------------------------------------
+
+export function contarEntidades() {
+  return Promise.all([
+    prisma.club.count(),
+    prisma.juez.count(),
+    prisma.guia.count(),
+    prisma.perro.count(),
+    prisma.binomio.count(),
+  ]).then(([clubes, jueces, guias, perros, binomios]) => ({ clubes, jueces, guias, perros, binomios }));
+}
+
+export function getClubesTodos() {
+  return prisma.club.findMany({
+    include: { _count: { select: { guias: true, binomios: true } } },
+    orderBy: { nombre: "asc" },
+  });
+}
+
+export function getClubPorId(id: string) {
+  return prisma.club.findUnique({ where: { id } });
+}
+
+export function getJuecesTodos() {
+  return prisma.juez.findMany({
+    include: { _count: { select: { jornadas: true, competiciones: true } } },
+    orderBy: { nombre: "asc" },
+  });
+}
+
+export function getJuezPorId(id: string) {
+  return prisma.juez.findUnique({ where: { id } });
+}
+
+export function getGuiasTodas() {
+  return prisma.guia.findMany({
+    include: { club: true, _count: { select: { binomios: true } } },
+    orderBy: [{ apellidos: "asc" }, { nombre: "asc" }],
+  });
+}
+
+export function getGuiaPorId(id: string) {
+  return prisma.guia.findUnique({ where: { id } });
+}
+
+export function getPerrosTodos() {
+  return prisma.perro.findMany({
+    include: { _count: { select: { binomios: true } } },
+    orderBy: { nombre: "asc" },
+  });
+}
+
+export function getPerroPorId(id: string) {
+  return prisma.perro.findUnique({ where: { id } });
+}
+
+export function getBinomiosTodos() {
+  return prisma.binomio.findMany({
+    include: {
+      guia: true,
+      perro: true,
+      club: true,
+      _count: { select: { resultados: true, clasificaciones: true } },
+    },
+    orderBy: [{ guia: { apellidos: "asc" } }],
+  });
+}
+
+export function getBinomioPorId(id: string) {
+  return prisma.binomio.findUnique({
+    where: { id },
+    include: { guia: true, perro: true, club: true },
+  });
+}
+
 export function contarResumenDashboard(temporadaId: string) {
   return Promise.all([
     prisma.jornada.count({ where: { temporadaId } }),
