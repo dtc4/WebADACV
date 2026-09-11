@@ -29,6 +29,7 @@ export async function getReglaModalidad(
     penalizacionRehuse: regla.penalizacionRehuse,
     penalizacionPorSegundo: regla.penalizacionPorSegundo,
     penalizacionEliminacion: regla.penalizacionEliminacion,
+    penalizacionNoPresentado: regla.penalizacionNoPresentado,
     rehusesParaEliminar: regla.rehusesParaEliminar,
     trmFactorMin: regla.trmFactorMin,
     trmFactorMax: regla.trmFactorMax,

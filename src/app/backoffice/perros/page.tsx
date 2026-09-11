@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getPerrosTodos } from "@/lib/data/backoffice";
-import { ETIQUETA_TALLA_CORTA } from "@/lib/constants";
+import { ETIQUETA_TALLA_CORTA, ETIQUETA_NIVEL } from "@/lib/constants";
 
 export default async function PerrosPage() {
   const perros = await getPerrosTodos();
@@ -26,6 +26,7 @@ export default async function PerrosPage() {
                 <th className="py-2 pr-4">Nombre</th>
                 <th className="py-2 pr-4">Raza</th>
                 <th className="py-2 pr-4">Talla</th>
+                <th className="py-2 pr-4">Nivel</th>
                 <th className="py-2 pr-4">Binomios</th>
               </tr>
             </thead>
@@ -39,6 +40,9 @@ export default async function PerrosPage() {
                   </td>
                   <td className="py-2 pr-4">{p.raza ?? "—"}</td>
                   <td className="py-2 pr-4">{ETIQUETA_TALLA_CORTA[p.talla] ?? p.talla}</td>
+                  <td className="py-2 pr-4">
+                    {p.nivel ? ETIQUETA_NIVEL[p.nivel] ?? p.nivel : <span className="text-black/40">Sin asignar</span>}
+                  </td>
                   <td className="py-2 pr-4">{p._count.binomios}</td>
                 </tr>
               ))}

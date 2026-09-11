@@ -16,6 +16,7 @@ export type ReglaModalidadConfig = {
   penalizacionRehuse: number;
   penalizacionPorSegundo: number;
   penalizacionEliminacion: number;
+  penalizacionNoPresentado: number;
   rehusesParaEliminar: number;
   trmFactorMin: number;
   trmFactorMax: number;
@@ -42,6 +43,11 @@ export type DatosCrudosResultado = {
    * obstáculos, comportamiento, etc. — ver reglamento, 24 supuestos). */
   eliminadoManual: boolean;
   motivoEliminacionManual?: string | null;
+  /** El binomio estaba inscrito/sorteado pero no se ha presentado a esta
+   * manga. Tiene prioridad sobre el resto de datos crudos: si viene a
+   * true, faltas/rehuses/tiempoS/eliminadoManual se ignoran y se aplica
+   * directamente `penalizacionNoPresentado`. */
+  noPresentado: boolean;
 };
 
 /** Parámetros de la manga necesarios para calcular TRS/TRM. */
@@ -60,6 +66,7 @@ export type ResultadoCalculado = {
   calificacion: Calificacion;
   eliminado: boolean;
   motivoEliminacion: string | null;
+  noPresentado: boolean;
 };
 
 export type MotorNoImplementadoError = {

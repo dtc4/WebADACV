@@ -67,10 +67,48 @@ export function getBinomiosActivos() {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Inscripciones (paso "Inscripciones" del asistente de jornada)
+// ---------------------------------------------------------------------------
+
+/** Inscripciones de una jornada, con el binomio completo y su nivel de
+ * competición (`nivel`, leído de `Perro.nivel`, la ficha que edita
+ * secretaría a mano). El agrupado por nivel/talla/apellidos para la UI lo
+ * hace el componente, esta función solo deja los datos necesarios. */
+export async function getInscripcionesJornada(jornadaId: string) {
+  const inscripciones = await prisma.inscripcion.findMany({
+    where: { jornadaId },
+    include: { binomio: { include: { guia: true, perro: true, club: true } } },
+    orderBy: { createdAt: "asc" },
+  });
+
+  // El nivel se lee directamente de la ficha del perro (Perro.nivel, editado
+  // a mano por secretaría), no de BinomioTemporada: esa tabla nunca llegó a
+  // tener una pantalla desde la que asignarle nivel a nadie, así que usarla
+  // aquí dejaría a todos los binomios "sin nivel" siempre.
+  return inscripciones.map((inscripcion: { binomio: { perro: { nivel: string | null } }; [key: string]: unknown }) => ({
+    ...inscripcion,
+    nivel: inscripcion.binomio.perro.nivel ?? null,
+  }));
+}
+
+/** Binomios activos que todavía no están inscritos en esta jornada, para el
+ * desplegable de "añadir inscripción" del paso "Inscripciones". */
+export function getBinomiosNoInscritosEnJornada(jornadaId: string) {
+  return prisma.binomio.findMany({
+    where: { activo: true, inscripciones: { none: { jornadaId } } },
+    include: { guia: true, perro: true, club: true },
+    orderBy: [{ guia: { apellidos: "asc" } }],
+  });
+}
+
 export function getClasificacionesTemporada(temporadaId: string) {
   return prisma.clasificacionTemporada.findMany({
     where: { temporadaId },
-    orderBy: [{ nivel: "asc" }, { talla: "asc" }],
+    // Nota: el modelo no tiene campo `talla` (es `categoria`) — este
+    // orderBy pedía un campo inexistente y Prisma lo habría rechazado en
+    // cuanto se visitara esta página; corregido de paso.
+    orderBy: [{ nivel: "asc" }, { categoria: "asc" }],
   });
 }
 

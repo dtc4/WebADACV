@@ -60,6 +60,7 @@ async function main() {
         penalizacionRehuse: 5,
         penalizacionPorSegundo: 1,
         penalizacionEliminacion: 50,
+        penalizacionNoPresentado: 75,
         rehusesParaEliminar: 3,
         trmFactorMin: 1.5,
         trmFactorMax: 2.0,
@@ -174,6 +175,7 @@ async function main() {
     penalizacionRehuse: 5,
     penalizacionPorSegundo: 1,
     penalizacionEliminacion: 50,
+    penalizacionNoPresentado: 75,
     rehusesParaEliminar: 3,
     trmFactorMin: 1.5,
     trmFactorMax: 2.0,
@@ -201,7 +203,13 @@ async function main() {
   for (const r of resultadosSeed) {
     const calculado = calcularResultado(
       "AGILITY_STANDARD",
-      { faltas: r.faltas, rehuses: r.rehuses, tiempoS: r.tiempoS, eliminadoManual: r.eliminadoManual ?? false },
+      {
+        faltas: r.faltas,
+        rehuses: r.rehuses,
+        tiempoS: r.tiempoS,
+        eliminadoManual: r.eliminadoManual ?? false,
+        noPresentado: false,
+      },
       competicionParams,
       regla
     );

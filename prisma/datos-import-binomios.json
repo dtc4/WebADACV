@@ -1,0 +1,2780 @@
+[
+  {
+    "fila_excel": 116,
+    "guia": {
+      "nombre": "Maria Angeles",
+      "apellidos": "Castillo Todoli",
+      "email": "martodoli81@gmail.com",
+      "telefono": "656900245",
+      "dni": "44871727S",
+      "fechaNacimiento": "1981-03-13",
+      "domicilio": "Avenida del Sur 6, escalera derecha, puerta 4",
+      "poblacion": "Mislata",
+      "provincia": "Valencia",
+      "codigoPostal": "46920"
+    },
+    "perro": {
+      "nombre": "Tiberio",
+      "raza": "Mestizo",
+      "microchip": "941000024341070",
+      "fechaNacimiento": "2019-07-15",
+      "sexo": "MACHO",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Picán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 3,
+    "guia": {
+      "nombre": "Laura",
+      "apellidos": "Aroca Fernández",
+      "email": "laura109af@gmail.com",
+      "telefono": null,
+      "dni": "26754983A",
+      "fechaNacimiento": "1990-09-10",
+      "domicilio": "Alcalde albors",
+      "poblacion": "València",
+      "provincia": "Valencia",
+      "codigoPostal": "46018"
+    },
+    "perro": {
+      "nombre": "Molly",
+      "raza": "Caniche",
+      "microchip": "985141005100512",
+      "fechaNacimiento": "0022-01-03",
+      "sexo": "HEMBRA",
+      "talla": "MINI1",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 4,
+    "guia": {
+      "nombre": "SERGIO",
+      "apellidos": "BAUTISTA BLANES",
+      "email": "champagility@gmail.com",
+      "telefono": "619113292",
+      "dni": "29182864G",
+      "fechaNacimiento": "1972-08-22",
+      "domicilio": "C/Emilio Lluch 5 pta24",
+      "poblacion": "VALENCIA",
+      "provincia": "Valencia",
+      "codigoPostal": "46014"
+    },
+    "perro": {
+      "nombre": "STAR",
+      "raza": "Border collie",
+      "microchip": "941000022228566",
+      "fechaNacimiento": "2017-09-04",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 5,
+    "guia": {
+      "nombre": "Nacho",
+      "apellidos": "Jordán Moreno",
+      "email": "jordan.m@coacvalencia.es",
+      "telefono": "600417659",
+      "dni": "52690265W",
+      "fechaNacimiento": "1963-11-17",
+      "domicilio": "CALLE SANTA BÁRBARA, 3",
+      "poblacion": "BÉTERA",
+      "provincia": "Valencia",
+      "codigoPostal": "46117"
+    },
+    "perro": {
+      "nombre": "SWEET",
+      "raza": "PASTOR DE SHETLAND",
+      "microchip": "941000016255312",
+      "fechaNacimiento": "2014-01-09",
+      "sexo": "HEMBRA",
+      "talla": "MINI1",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 6,
+    "guia": {
+      "nombre": "Nacho",
+      "apellidos": "Jordán Moreno",
+      "email": "jordan.m@coacvalencia.es",
+      "telefono": "600417659",
+      "dni": "52690265W",
+      "fechaNacimiento": "1963-11-17",
+      "domicilio": "CALLE SANTA BÁRBARA,3",
+      "poblacion": "BÉTERA",
+      "provincia": "Valencia",
+      "codigoPostal": "46117"
+    },
+    "perro": {
+      "nombre": "LITTEL",
+      "raza": "PASTOR DE SHETLAND",
+      "microchip": "941000023696011",
+      "fechaNacimiento": "2019-04-16",
+      "sexo": "MACHO",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 91,
+    "guia": {
+      "nombre": "Layla",
+      "apellidos": "Farhat",
+      "email": "niceandfizzy@aol.com",
+      "telefono": "00447784221615",
+      "dni": "Y5699232F",
+      "fechaNacimiento": "1985-12-18",
+      "domicilio": "URB CORRAL DEL RIQUET, G54",
+      "poblacion": "Lliria",
+      "provincia": "Valencia",
+      "codigoPostal": "46160"
+    },
+    "perro": {
+      "nombre": "Max",
+      "raza": "Mestizo",
+      "microchip": "941000022034023",
+      "fechaNacimiento": "2017-08-25",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 8,
+    "guia": {
+      "nombre": "Rogelio",
+      "apellidos": "Benitez Segovia",
+      "email": "rockysamba71@gmail.com",
+      "telefono": "643461580",
+      "dni": "18977598E",
+      "fechaNacimiento": "1971-03-06",
+      "domicilio": "CM SERRETES 2",
+      "poblacion": "SANT JOAN DE MORO",
+      "provincia": "Castellón",
+      "codigoPostal": "12130"
+    },
+    "perro": {
+      "nombre": "SHILA",
+      "raza": "BC",
+      "microchip": "992000001074875",
+      "fechaNacimiento": "2022-07-01",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 9,
+    "guia": {
+      "nombre": "PATRICIA",
+      "apellidos": "GARCIA ARRUFAT",
+      "email": "rockysamba71@gmail.com",
+      "telefono": "643461584",
+      "dni": "18993938Y",
+      "fechaNacimiento": "1975-04-03",
+      "domicilio": "CM SERRETES 2",
+      "poblacion": "SANT JOAN DEL MORO",
+      "provincia": "Castellón",
+      "codigoPostal": "12130"
+    },
+    "perro": {
+      "nombre": "GAME",
+      "raza": "BC",
+      "microchip": "985113003785875",
+      "fechaNacimiento": "2020-04-30",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 10,
+    "guia": {
+      "nombre": "Antonio",
+      "apellidos": "García Montés",
+      "email": "equipoantonioagility@gmail.com",
+      "telefono": "656281769",
+      "dni": "22580265S",
+      "fechaNacimiento": "1979-01-26",
+      "domicilio": "San Antonio 26, 3A",
+      "poblacion": "Paiporta",
+      "provincia": "Valencia",
+      "codigoPostal": "46200"
+    },
+    "perro": {
+      "nombre": "Pícara",
+      "raza": "Shetland Sheepdog",
+      "microchip": "941000025498118",
+      "fechaNacimiento": "2020-05-02",
+      "sexo": "HEMBRA",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 11,
+    "guia": {
+      "nombre": "Leonor",
+      "apellidos": "Peral Martí",
+      "email": "lperamar@yahoo.es",
+      "telefono": "620888125",
+      "dni": "18441774Y",
+      "fechaNacimiento": "1978-06-16",
+      "domicilio": "C/Muñoz Degrain 22,1",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44001"
+    },
+    "perro": {
+      "nombre": "Caña ( Lucera de Anarres)",
+      "raza": "PDAE",
+      "microchip": "981020011369872",
+      "fechaNacimiento": "2016-02-02",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 12,
+    "guia": {
+      "nombre": "Leonor",
+      "apellidos": "Peral Martí",
+      "email": "lperamar@yahoo.es",
+      "telefono": "620888125",
+      "dni": "18441774Y",
+      "fechaNacimiento": "1978-06-16",
+      "domicilio": "C/ Muñoz Degrain 22,1",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44001"
+    },
+    "perro": {
+      "nombre": "Hacha (Chata de RubioAlfaro)",
+      "raza": "PDAE",
+      "microchip": "941000026607888",
+      "fechaNacimiento": "2022-11-14",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 93,
+    "guia": {
+      "nombre": "José Antonio",
+      "apellidos": "Rodríguez de la Fuente",
+      "email": "jrodriguezf@hotmail.es",
+      "telefono": "609266035",
+      "dni": "12382275H",
+      "fechaNacimiento": "1971-07-14",
+      "domicilio": "Antonio Machado 14",
+      "poblacion": "Llíria",
+      "provincia": "Valencia",
+      "codigoPostal": "46160"
+    },
+    "perro": {
+      "nombre": "Laika",
+      "raza": "Pastor Alemán",
+      "microchip": "941000019871710",
+      "fechaNacimiento": "2016-11-30",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 14,
+    "guia": {
+      "nombre": "Israel",
+      "apellidos": "Sanchis Perez",
+      "email": "isanchis@fbcv.es",
+      "telefono": "607410405",
+      "dni": "85090969P",
+      "fechaNacimiento": "1977-10-22",
+      "domicilio": "C/ Les Roses 19, 20 escalera B",
+      "poblacion": "Paterna",
+      "provincia": "Valencia",
+      "codigoPostal": "46980"
+    },
+    "perro": {
+      "nombre": "Marte",
+      "raza": "PDAE",
+      "microchip": "941000023708216",
+      "fechaNacimiento": "2019-04-12",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 83,
+    "guia": {
+      "nombre": "Sara",
+      "apellidos": "Pedreño Kawecki",
+      "email": "sarah_22_51@hotmail.com",
+      "telefono": "655345386",
+      "dni": "20031011N",
+      "fechaNacimiento": "1988-07-08",
+      "domicilio": "Avd. Diputacion n°5",
+      "poblacion": "Alqueria de la condesa",
+      "provincia": "Valencia",
+      "codigoPostal": "46715"
+    },
+    "perro": {
+      "nombre": "Runa",
+      "raza": "Perro de Agua Español",
+      "microchip": "941000018621349",
+      "fechaNacimiento": "2015-10-11",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": true
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 16,
+    "guia": {
+      "nombre": "Rebeca",
+      "apellidos": "Pedreño Kawecki",
+      "email": "repes88@hotmail.com",
+      "telefono": "635075021",
+      "dni": "20031010B",
+      "fechaNacimiento": "1988-07-08",
+      "domicilio": "Avd. Diputación n°7",
+      "poblacion": "Alqueria de la condesa",
+      "provincia": "Valencia",
+      "codigoPostal": "46715"
+    },
+    "perro": {
+      "nombre": "Kora",
+      "raza": "Perro de Agua Español",
+      "microchip": "941000017017606",
+      "fechaNacimiento": "2014-06-01",
+      "sexo": "HEMBRA",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 17,
+    "guia": {
+      "nombre": "MERCEDES",
+      "apellidos": "LÓPEZ FUENTES",
+      "email": "suguiliob@gmail.com",
+      "telefono": "622604680",
+      "dni": "24342083X",
+      "fechaNacimiento": "1968-04-19",
+      "domicilio": "JOSÉ  BENLLIURE, 191",
+      "poblacion": "VALENCIA",
+      "provincia": "Valencia",
+      "codigoPostal": "46011"
+    },
+    "perro": {
+      "nombre": "MAX",
+      "raza": "BORDER COLLIE",
+      "microchip": "941000024899176",
+      "fechaNacimiento": "2020-06-13",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 18,
+    "guia": {
+      "nombre": "Elena",
+      "apellidos": "Prades Carceller",
+      "email": "hepracar@hotmail.com",
+      "telefono": "655921777",
+      "dni": "20471950H",
+      "fechaNacimiento": "1983-05-02",
+      "domicilio": "Calle Almussafes 1, 1, 17",
+      "poblacion": "Benifaio",
+      "provincia": "Valencia",
+      "codigoPostal": "46450"
+    },
+    "perro": {
+      "nombre": "Tarzán",
+      "raza": "Podenco",
+      "microchip": "941000021448774",
+      "fechaNacimiento": "2017-04-15",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 19,
+    "guia": {
+      "nombre": "Adrián",
+      "apellidos": "Casañ Palomero",
+      "email": "afric_83@hotmail.com",
+      "telefono": null,
+      "dni": "20468497S",
+      "fechaNacimiento": "1983-05-04",
+      "domicilio": "Calle Almussafes n°1 1° PTA 17",
+      "poblacion": "Benifaio",
+      "provincia": "Valencia",
+      "codigoPostal": "46450"
+    },
+    "perro": {
+      "nombre": "Tarzán",
+      "raza": "Podenco",
+      "microchip": "941000021448774",
+      "fechaNacimiento": "2017-04-15",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 88,
+    "guia": {
+      "nombre": "María José",
+      "apellidos": "Greses",
+      "email": "zagalorca3@hotmail.com",
+      "telefono": "699794673",
+      "dni": "33454551Q",
+      "fechaNacimiento": "1973-10-08",
+      "domicilio": "C/ Marqués del Turia 36-15",
+      "poblacion": "Paiporta",
+      "provincia": "Valencia",
+      "codigoPostal": "46200"
+    },
+    "perro": {
+      "nombre": "Nit",
+      "raza": "Mestiza",
+      "microchip": "941000017079845",
+      "fechaNacimiento": "2014-05-03",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": true
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 21,
+    "guia": {
+      "nombre": "M. Jesús",
+      "apellidos": "Sánchez  Bernabéu",
+      "email": "mj.saber@gmail.com",
+      "telefono": "686063027",
+      "dni": "22625757J",
+      "fechaNacimiento": "1956-06-08",
+      "domicilio": "Carteros 71. 1. 1",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46017"
+    },
+    "perro": {
+      "nombre": "Crispi",
+      "raza": "Caniche",
+      "microchip": "941000024336702",
+      "fechaNacimiento": "2020-01-17",
+      "sexo": "MACHO",
+      "talla": "MINI2",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 22,
+    "guia": {
+      "nombre": "María del Carmen",
+      "apellidos": "González cuenca",
+      "email": "mari.buzz.lola@gmail.com",
+      "telefono": "659998185",
+      "dni": "48380943y",
+      "fechaNacimiento": "1976-10-28",
+      "domicilio": "Blasco Ibáñez 11 5",
+      "poblacion": "Catarroja",
+      "provincia": "Valencia",
+      "codigoPostal": "46470"
+    },
+    "perro": {
+      "nombre": "Mcnulty starlight",
+      "raza": "Border collie",
+      "microchip": "250268731724403",
+      "fechaNacimiento": "2016-10-10",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 23,
+    "guia": {
+      "nombre": "Roberto",
+      "apellidos": "González Cayón",
+      "email": "robertogonzalezcayon@hotmail.com",
+      "telefono": "653852104",
+      "dni": "13939778f",
+      "fechaNacimiento": "1973-03-11",
+      "domicilio": "Camí Racó 26",
+      "poblacion": "Riola",
+      "provincia": "Valencia",
+      "codigoPostal": "46417"
+    },
+    "perro": {
+      "nombre": "Lala",
+      "raza": "Mestizo",
+      "microchip": "941000019884086",
+      "fechaNacimiento": "2017-11-28",
+      "sexo": "HEMBRA",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 24,
+    "guia": {
+      "nombre": "Eva",
+      "apellidos": "Grau Fernandez",
+      "email": "eva.g.f@hotmail.com",
+      "telefono": "677162542",
+      "dni": "22592194F",
+      "fechaNacimiento": "1986-10-29",
+      "domicilio": "Lira Almussafense 2, 1.",
+      "poblacion": "Almussafes",
+      "provincia": "Valencia",
+      "codigoPostal": "46440"
+    },
+    "perro": {
+      "nombre": "Aria",
+      "raza": "Jagd Terrier",
+      "microchip": "941000021915333",
+      "fechaNacimiento": "2017-06-14",
+      "sexo": "HEMBRA",
+      "talla": "MINI2",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 85,
+    "guia": {
+      "nombre": "Jose vicente",
+      "apellidos": "escriche sancho",
+      "email": "josevicenteescriche1979@gmail.com",
+      "telefono": null,
+      "dni": "44512841k",
+      "fechaNacimiento": "1979-08-28",
+      "domicilio": "C/ Vicente Brull 71 pta7",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46011"
+    },
+    "perro": {
+      "nombre": "Volt",
+      "raza": "Border Collie",
+      "microchip": "941000023696211",
+      "fechaNacimiento": "2018-11-05",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 26,
+    "guia": {
+      "nombre": "Sheila",
+      "apellidos": "Verdegay López",
+      "email": "sverdegayl@gmail.com",
+      "telefono": "665018375",
+      "dni": "44531070B",
+      "fechaNacimiento": "1992-02-03",
+      "domicilio": "Urn. Altury calle 21 n 45",
+      "poblacion": "Turis",
+      "provincia": "Valencia",
+      "codigoPostal": "46389"
+    },
+    "perro": {
+      "nombre": "Duman",
+      "raza": "Labrador mestizo",
+      "microchip": "941000022440167",
+      "fechaNacimiento": "2018-05-25",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 113,
+    "guia": {
+      "nombre": "Nuria",
+      "apellidos": "De Frutos Magdaleno",
+      "email": "nfmagda@hotmail.com",
+      "telefono": "617212158",
+      "dni": "44901157M",
+      "fechaNacimiento": "1974-09-04",
+      "domicilio": "Avenida Joaquim Sorolla, nº 49 , 1º , pta 2",
+      "poblacion": "Alcasser",
+      "provincia": "Valencia",
+      "codigoPostal": "46290"
+    },
+    "perro": {
+      "nombre": "Cloe",
+      "raza": "Mestiza",
+      "microchip": "941000022798706",
+      "fechaNacimiento": "2018-02-18",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": true
+    },
+    "club": "Picán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 28,
+    "guia": {
+      "nombre": "JOSÉ IGANCIO",
+      "apellidos": "NARVAIZA ABOY",
+      "email": "natxete35@hotmail.com",
+      "telefono": "606191465",
+      "dni": "18442619T",
+      "fechaNacimiento": "1979-09-24",
+      "domicilio": "CALLE AMANTES 13, 4D",
+      "poblacion": "TERUEL",
+      "provincia": "Teruel",
+      "codigoPostal": "44001"
+    },
+    "perro": {
+      "nombre": "KELA",
+      "raza": "BORDER COLLIE",
+      "microchip": "941000024284408",
+      "fechaNacimiento": "2019-07-11",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 29,
+    "guia": {
+      "nombre": "cristina",
+      "apellidos": "opriscan",
+      "email": "cristina.conectabyt@gmail.com",
+      "telefono": "659782540",
+      "dni": "x4723307g",
+      "fechaNacimiento": "1982-04-21",
+      "domicilio": "c/trav. barrio del carmen nº1 1ºdcha",
+      "poblacion": "teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44001"
+    },
+    "perro": {
+      "nombre": "arlo",
+      "raza": "american staffordshire terrier",
+      "microchip": "981020011331464",
+      "fechaNacimiento": "2016-12-23",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 30,
+    "guia": {
+      "nombre": "cristina",
+      "apellidos": "opriscan",
+      "email": "cristina.conectabyt@gmail.com",
+      "telefono": "659782540",
+      "dni": "x4723307g",
+      "fechaNacimiento": "1982-04-21",
+      "domicilio": "c/ trav. barrio del carmen nº 1 - 1º dcha",
+      "poblacion": "teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44001"
+    },
+    "perro": {
+      "nombre": "kyone",
+      "raza": "perro de agua español",
+      "microchip": "941000026607889",
+      "fechaNacimiento": "2022-11-14",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 31,
+    "guia": {
+      "nombre": "Fernando",
+      "apellidos": "García Rubio",
+      "email": "tibofgr@gmail.com",
+      "telefono": "677695589",
+      "dni": "48323428z",
+      "fechaNacimiento": "1984-01-08",
+      "domicilio": "Av. Serra cabeço d'Or 27, 40",
+      "poblacion": "La Nucía",
+      "provincia": "Alicante",
+      "codigoPostal": "03530"
+    },
+    "perro": {
+      "nombre": "Xia",
+      "raza": "Pinche",
+      "microchip": "941000026238006",
+      "fechaNacimiento": "2021-02-04",
+      "sexo": "HEMBRA",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "La Nucía",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 32,
+    "guia": {
+      "nombre": "Adrian",
+      "apellidos": "Narro Opriscan",
+      "email": "adri.narro.opriscan@gmail.com",
+      "telefono": "625349891",
+      "dni": "18460757Z",
+      "fechaNacimiento": "2006-10-01",
+      "domicilio": "calle/trav.barrio del carmen",
+      "poblacion": "teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44001"
+    },
+    "perro": {
+      "nombre": "Rasha",
+      "raza": "perro de agua español",
+      "microchip": "941000025944192",
+      "fechaNacimiento": "2020-09-20",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 33,
+    "guia": {
+      "nombre": "María",
+      "apellidos": "Gabarre Soriano",
+      "email": "gabarresorianomaria@gmail.com",
+      "telefono": "639531232",
+      "dni": "18455920F",
+      "fechaNacimiento": "1997-08-25",
+      "domicilio": "C/ Jaime I el Conquistador 6 4B",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "Lucky",
+      "raza": "Mestizo de pinscher",
+      "microchip": "941000022103643",
+      "fechaNacimiento": "2018-10-30",
+      "sexo": "MACHO",
+      "talla": "MINI2",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 34,
+    "guia": {
+      "nombre": "Ester",
+      "apellidos": "Esteve Gabarda",
+      "email": "paletester@gmail.com",
+      "telefono": "627319347",
+      "dni": "24363502Q",
+      "fechaNacimiento": "1971-08-02",
+      "domicilio": "Travesía Santa Mónica n8 1c",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44003"
+    },
+    "perro": {
+      "nombre": "Porthos",
+      "raza": "Caniche mediano",
+      "microchip": "985141005100513",
+      "fechaNacimiento": "2022-03-04",
+      "sexo": "MACHO",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 35,
+    "guia": {
+      "nombre": "Debora",
+      "apellidos": "Alegre Sebastiá",
+      "email": "deboyo87@gmail.com",
+      "telefono": "605095722",
+      "dni": "53358942-T",
+      "fechaNacimiento": "1987-02-26",
+      "domicilio": "Matilde Salvador 2-3",
+      "poblacion": "Picassent",
+      "provincia": "Valencia",
+      "codigoPostal": "46220"
+    },
+    "perro": {
+      "nombre": "Kala",
+      "raza": "Mestizo",
+      "microchip": "94/1000022799591",
+      "fechaNacimiento": "2018-08-08",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Picán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 37,
+    "guia": {
+      "nombre": "Gemma",
+      "apellidos": "Perez martinez",
+      "email": "gemmapeerezmartiinez@gmail.com",
+      "telefono": "727764838",
+      "dni": "24446191C",
+      "fechaNacimiento": "2002-11-23",
+      "domicilio": "C/maestro serrano 14",
+      "poblacion": "La pobla de vallbona",
+      "provincia": "Valencia",
+      "codigoPostal": "46185"
+    },
+    "perro": {
+      "nombre": "Engué",
+      "raza": "Cruce",
+      "microchip": "941000017737585",
+      "fechaNacimiento": "2014-09-30",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 107,
+    "guia": {
+      "nombre": "Ana",
+      "apellidos": "Cordón Contreras",
+      "email": "anacordon@outlook.com",
+      "telefono": "696939889",
+      "dni": "85087445A",
+      "fechaNacimiento": "1971-02-28",
+      "domicilio": "C/Cervol 7",
+      "poblacion": "San Antonio Benageber",
+      "provincia": "Valencia",
+      "codigoPostal": "46184"
+    },
+    "perro": {
+      "nombre": "Kali",
+      "raza": "Border Collie",
+      "microchip": "941000025700888",
+      "fechaNacimiento": "2018-09-10",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 39,
+    "guia": {
+      "nombre": "Fermin",
+      "apellidos": "Gil Paya",
+      "email": "fermingp72@gmail.com",
+      "telefono": "671512247",
+      "dni": "79104271A",
+      "fechaNacimiento": "1972-11-29",
+      "domicilio": "Cami Cotelles 186",
+      "poblacion": "Polop",
+      "provincia": "Alicante",
+      "codigoPostal": "3520"
+    },
+    "perro": {
+      "nombre": "Black",
+      "raza": "Border Collie",
+      "microchip": "956000007871384",
+      "fechaNacimiento": "2019-03-14",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "La Nucía",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 40,
+    "guia": {
+      "nombre": "Fermin",
+      "apellidos": "Gil Paya",
+      "email": "fermingp72@gmail.com",
+      "telefono": "671512247",
+      "dni": "79104271A",
+      "fechaNacimiento": "1972-11-29",
+      "domicilio": "Cami Cotelles 186",
+      "poblacion": "Polop",
+      "provincia": "Alicante",
+      "codigoPostal": "03520"
+    },
+    "perro": {
+      "nombre": "Leah",
+      "raza": "Border Collie",
+      "microchip": "643094100692492",
+      "fechaNacimiento": "2021-11-08",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "La Nucía",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 41,
+    "guia": {
+      "nombre": "Gemma",
+      "apellidos": "Moreno Martinez",
+      "email": "gemuchi05@gmail.com",
+      "telefono": "653029340",
+      "dni": "26749917-C",
+      "fechaNacimiento": "1990-03-05",
+      "domicilio": "Parque infantil 5 pta 7",
+      "poblacion": "Alcasser",
+      "provincia": "Valencia",
+      "codigoPostal": "46290"
+    },
+    "perro": {
+      "nombre": "Gea",
+      "raza": "Stanffordshire",
+      "microchip": "94/1000017477637",
+      "fechaNacimiento": "2014-10-12",
+      "sexo": "HEMBRA",
+      "talla": "MINI2",
+      "performance": true
+    },
+    "club": "Picán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 42,
+    "guia": {
+      "nombre": "Gemma",
+      "apellidos": "Moreno Martinez",
+      "email": "gemuchi05@gmail.com",
+      "telefono": "653029340",
+      "dni": "26749917-C",
+      "fechaNacimiento": "1990-03-05",
+      "domicilio": "Parque infantil 5 pta 7",
+      "poblacion": "Alcasser",
+      "provincia": "Valencia",
+      "codigoPostal": "46290"
+    },
+    "perro": {
+      "nombre": "Tellina",
+      "raza": "Bodeguero Andaluz",
+      "microchip": "94/1010000458576",
+      "fechaNacimiento": "2022-08-01",
+      "sexo": "HEMBRA",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Picán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 43,
+    "guia": {
+      "nombre": "Mónica",
+      "apellidos": "Soriano Blasco",
+      "email": "anweryi@hotmail.com",
+      "telefono": "646669886",
+      "dni": "18441573N",
+      "fechaNacimiento": "1979-02-04",
+      "domicilio": "C/ Nicanor Villalta 10, 3B",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "Ric",
+      "raza": "Mestizo",
+      "microchip": "941000022103653",
+      "fechaNacimiento": "2017-07-19",
+      "sexo": "MACHO",
+      "talla": "MINI1",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 44,
+    "guia": {
+      "nombre": "Mónica",
+      "apellidos": "Soriano Blasco",
+      "email": "anweryi@hotmail.com",
+      "telefono": "646669886",
+      "dni": "18441573N",
+      "fechaNacimiento": "1979-02-04",
+      "domicilio": "C/ Nicanor Villalta 10, 3B",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "Kiara",
+      "raza": "Border collie",
+      "microchip": "941000021427920",
+      "fechaNacimiento": "2017-04-25",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 45,
+    "guia": {
+      "nombre": "África",
+      "apellidos": "Almansa Sánchez",
+      "email": "msr31177@gmail.com",
+      "telefono": "686098759",
+      "dni": "55150148N",
+      "fechaNacimiento": "2006-08-29",
+      "domicilio": "C/Belice 9",
+      "poblacion": "La Nucía",
+      "provincia": "Alicante",
+      "codigoPostal": "03530"
+    },
+    "perro": {
+      "nombre": "Luffy",
+      "raza": "Mestizo",
+      "microchip": "941000027129526",
+      "fechaNacimiento": "2022-08-29",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "La Nucía",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 46,
+    "guia": {
+      "nombre": "Marcos",
+      "apellidos": "Cortes Belmonte",
+      "email": "bartorreon@gmail.com",
+      "telefono": "685811226",
+      "dni": "18430090Y",
+      "fechaNacimiento": "1970-09-13",
+      "domicilio": "Carretera de cuenca vieja n71",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44001"
+    },
+    "perro": {
+      "nombre": "Noa",
+      "raza": "Mestiza",
+      "microchip": "941000024253958",
+      "fechaNacimiento": "2019-11-05",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 47,
+    "guia": {
+      "nombre": "Yuri",
+      "apellidos": "Agudo Soriano",
+      "email": "yas_cova@hotmail.com",
+      "telefono": "662255282",
+      "dni": "53608976R",
+      "fechaNacimiento": "1989-08-01",
+      "domicilio": "Lepanto 32",
+      "poblacion": "Paiporta",
+      "provincia": "Valencia",
+      "codigoPostal": "46200"
+    },
+    "perro": {
+      "nombre": "Nuna",
+      "raza": "Perro de agua Español",
+      "microchip": "941000026451696",
+      "fechaNacimiento": "2021-04-24",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 48,
+    "guia": {
+      "nombre": "Antonio Miguel",
+      "apellidos": "Suárez Castillo",
+      "email": "elcorreodetoni13@gmail.com",
+      "telefono": "633404438",
+      "dni": "31861426D",
+      "fechaNacimiento": "1973-06-20",
+      "domicilio": "Ciudad de Melilla 15 n°5",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46017"
+    },
+    "perro": {
+      "nombre": "Ozzy",
+      "raza": "Mestizo",
+      "microchip": "941000021638618",
+      "fechaNacimiento": "2017-03-21",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 49,
+    "guia": {
+      "nombre": "ESTER",
+      "apellidos": "MARTIN ROMERO",
+      "email": "estermaro@yahoo.es",
+      "telefono": "636293486",
+      "dni": "18446659S",
+      "fechaNacimiento": "1983-01-31",
+      "domicilio": "C/ Luis Buñuel 1B - 3°C",
+      "poblacion": "TERUEL",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "NÁCAR",
+      "raza": "Perro de agua español",
+      "microchip": "981020011359762",
+      "fechaNacimiento": "2016-02-02",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": true
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 89,
+    "guia": {
+      "nombre": "Irene",
+      "apellidos": "Gimeno Navarro",
+      "email": "irenegimeno5@gmail.com",
+      "telefono": "616195030",
+      "dni": "24441702Q",
+      "fechaNacimiento": "2003-10-02",
+      "domicilio": "Gran vía Fernando el católico, 76",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46008"
+    },
+    "perro": {
+      "nombre": "Lacky",
+      "raza": "Border Collie",
+      "microchip": "941000019404530",
+      "fechaNacimiento": "2016-09-26",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 51,
+    "guia": {
+      "nombre": "Paloma",
+      "apellidos": "Coronado Canós",
+      "email": "palomacoronadocanos@gmail.com",
+      "telefono": "697827992",
+      "dni": "48580921E",
+      "fechaNacimiento": "1984-11-24",
+      "domicilio": "Cl San Antonio 4 - 1",
+      "poblacion": "Quart de Poblet",
+      "provincia": "Valencia",
+      "codigoPostal": "46930"
+    },
+    "perro": {
+      "nombre": "Lulú",
+      "raza": "Pomerania",
+      "microchip": "941000026189519",
+      "fechaNacimiento": "2021-09-10",
+      "sexo": "HEMBRA",
+      "talla": "MINI1",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 52,
+    "guia": {
+      "nombre": "Francisco Javier",
+      "apellidos": "Alegre Sancho",
+      "email": "paletester@gmail.com",
+      "telefono": "670416707",
+      "dni": "19097541C",
+      "fechaNacimiento": "1964-06-01",
+      "domicilio": "Travesía Santa Mónica n8 1c",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44003"
+    },
+    "perro": {
+      "nombre": "Kerchak",
+      "raza": "Agua Español",
+      "microchip": "981020011330565",
+      "fechaNacimiento": "2016-02-02",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 53,
+    "guia": {
+      "nombre": "Enrique Manuel",
+      "apellidos": "Aparicio Tarín",
+      "email": "eaparicio5221@yahoo.es",
+      "telefono": "633138345",
+      "dni": "19900428 T",
+      "fechaNacimiento": "1967-07-29",
+      "domicilio": "Avd Los Serranos 12",
+      "poblacion": "Bétera",
+      "provincia": "Valencia",
+      "codigoPostal": "46117"
+    },
+    "perro": {
+      "nombre": "Hera",
+      "raza": "Pastor belga malinois holandés",
+      "microchip": "941000022573193",
+      "fechaNacimiento": "2018-02-10",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 54,
+    "guia": {
+      "nombre": "Cristina",
+      "apellidos": "Martinez Villacañas",
+      "email": "crismarvi75@gmail.com",
+      "telefono": "649763331",
+      "dni": "20821053G",
+      "fechaNacimiento": "1975-06-16",
+      "domicilio": "C/ dels Arbres, 72-2-2",
+      "poblacion": "Algemesí",
+      "provincia": "Valencia",
+      "codigoPostal": "46680"
+    },
+    "perro": {
+      "nombre": "Lexa",
+      "raza": "Perro de aguas",
+      "microchip": "941000025978560",
+      "fechaNacimiento": "2020-10-25",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 55,
+    "guia": {
+      "nombre": "Javier",
+      "apellidos": "López gascon",
+      "email": "javilopezgascon@gmail.com",
+      "telefono": "675395040",
+      "dni": "18444821v",
+      "fechaNacimiento": "1988-11-05",
+      "domicilio": "C/ Carretera N°30",
+      "poblacion": "Escucha",
+      "provincia": "Teruel",
+      "codigoPostal": "44770"
+    },
+    "perro": {
+      "nombre": "Max",
+      "raza": "Mestizo",
+      "microchip": "941000026642540",
+      "fechaNacimiento": "2021-05-02",
+      "sexo": "MACHO",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 56,
+    "guia": {
+      "nombre": "Óscar",
+      "apellidos": "Collado Fernández",
+      "email": "estopues@gmail.com",
+      "telefono": "658889996",
+      "dni": "44868612M",
+      "fechaNacimiento": "1979-01-18",
+      "domicilio": "c/ GREMIS 43, 16",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46014"
+    },
+    "perro": {
+      "nombre": "Tesla",
+      "raza": "BC",
+      "microchip": "941000019650908",
+      "fechaNacimiento": "2016-11-09",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 57,
+    "guia": {
+      "nombre": "Óscar",
+      "apellidos": "Collado Fernández",
+      "email": "estopues@gmail.com",
+      "telefono": "658889996",
+      "dni": "44868612M",
+      "fechaNacimiento": "1979-01-18",
+      "domicilio": "c/ DELS GREMIS 43,16",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46014"
+    },
+    "perro": {
+      "nombre": "Iria",
+      "raza": "Podenco",
+      "microchip": "941000014718768",
+      "fechaNacimiento": "2012-11-01",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": true
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 58,
+    "guia": {
+      "nombre": "JOSE MANUEL",
+      "apellidos": "PALMA DOBON",
+      "email": "karkoma2007@gmail.com",
+      "telefono": "605424367",
+      "dni": "48527947V",
+      "fechaNacimiento": "1985-03-12",
+      "domicilio": "Cornista carreres",
+      "poblacion": "QUART DE POBLET",
+      "provincia": "Valencia",
+      "codigoPostal": "46930"
+    },
+    "perro": {
+      "nombre": "TURCO",
+      "raza": "MESTIZO",
+      "microchip": "981098104743968",
+      "fechaNacimiento": "2013-12-15",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": true
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 98,
+    "guia": {
+      "nombre": "Jose Manuel",
+      "apellidos": "Palom Dobón",
+      "email": "karkoma2003@gmail.com",
+      "telefono": "605424367",
+      "dni": "48527957V",
+      "fechaNacimiento": "1985-03-12",
+      "domicilio": "Cañada Alonso i Birlet",
+      "poblacion": "Torrent",
+      "provincia": "Valencia",
+      "codigoPostal": "46900"
+    },
+    "perro": {
+      "nombre": "Arwen",
+      "raza": "Caniche",
+      "microchip": "981098106738251",
+      "fechaNacimiento": "2020-01-17",
+      "sexo": "HEMBRA",
+      "talla": "MINI1",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 60,
+    "guia": {
+      "nombre": "Andrea",
+      "apellidos": "Garcia Ribes",
+      "email": "andreagarciaribes@gmail.com",
+      "telefono": "653312778",
+      "dni": "20850847K",
+      "fechaNacimiento": "1990-09-02",
+      "domicilio": "C/ Cardenal Benlloch 14",
+      "poblacion": "Algemesi",
+      "provincia": "Valencia",
+      "codigoPostal": "46680"
+    },
+    "perro": {
+      "nombre": "Jack",
+      "raza": "Border Collie",
+      "microchip": "941000026628408",
+      "fechaNacimiento": "2021-08-23",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": true
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 61,
+    "guia": {
+      "nombre": "Cristifol",
+      "apellidos": "Albert perez",
+      "email": "mari.buzz.lola@gmail.com",
+      "telefono": "659998185",
+      "dni": "52635360k",
+      "fechaNacimiento": "1971-09-24",
+      "domicilio": "Blasco Ibáñez 11: 5",
+      "poblacion": "Catarroja",
+      "provincia": "Valencia",
+      "codigoPostal": "46470"
+    },
+    "perro": {
+      "nombre": "Mcnulty",
+      "raza": "Border collie",
+      "microchip": "941000023708216",
+      "fechaNacimiento": "2016-10-10",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 62,
+    "guia": {
+      "nombre": "Elena",
+      "apellidos": "Perales Salvador",
+      "email": "imprenta@dimensionprint.es",
+      "telefono": "607857901",
+      "dni": "18440155c",
+      "fechaNacimiento": "1977-01-14",
+      "domicilio": "C/. Argentina, 1 - bajo",
+      "poblacion": "TERUEL",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "THAIS",
+      "raza": "SHEDLAND",
+      "microchip": "941000026640048",
+      "fechaNacimiento": "2021-12-10",
+      "sexo": "HEMBRA",
+      "talla": "MINI2",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 84,
+    "guia": {
+      "nombre": "Loli",
+      "apellidos": "Calatayud Chardi",
+      "email": "samca9@gmail.com",
+      "telefono": "616203317",
+      "dni": "73551083G",
+      "fechaNacimiento": "1967-10-31",
+      "domicilio": "Benemérita 14, 1",
+      "poblacion": "Silla",
+      "provincia": "Valencia",
+      "codigoPostal": "46460"
+    },
+    "perro": {
+      "nombre": "Peter",
+      "raza": "Border Collie",
+      "microchip": "941000023442116",
+      "fechaNacimiento": "2019-02-12",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 64,
+    "guia": {
+      "nombre": "Maria Jesus",
+      "apellidos": "Fuertes garcia",
+      "email": "halegria22@yahoo.es",
+      "telefono": "629026753",
+      "dni": "18432833n",
+      "fechaNacimiento": "1972-03-25",
+      "domicilio": "Sanz Gadea 2, 2-6",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "Rita",
+      "raza": "Perro de Agua Español",
+      "microchip": "94100024863390",
+      "fechaNacimiento": "2019-09-21",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 65,
+    "guia": {
+      "nombre": "Lorena",
+      "apellidos": "Oliver Duart",
+      "email": "oldualo2@gmail.com",
+      "telefono": "679238569",
+      "dni": "29208223V",
+      "fechaNacimiento": "1986-01-14",
+      "domicilio": "C/foya,nº1,1º,pta2",
+      "poblacion": "Almussafes",
+      "provincia": "Valencia",
+      "codigoPostal": "46440"
+    },
+    "perro": {
+      "nombre": "Dora",
+      "raza": "Springer spaniel",
+      "microchip": "941000026625535",
+      "fechaNacimiento": "2021-04-29",
+      "sexo": "HEMBRA",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 66,
+    "guia": {
+      "nombre": "Ana",
+      "apellidos": "Monroig Araujo",
+      "email": "annamon87@gmail.com",
+      "telefono": "658133479",
+      "dni": "48595343T",
+      "fechaNacimiento": "1990-02-21",
+      "domicilio": "plz pintor dubón 3 - 20 derecha",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46015"
+    },
+    "perro": {
+      "nombre": "DARWIN",
+      "raza": "border collie",
+      "microchip": "941000025169563",
+      "fechaNacimiento": "2020-04-30",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 67,
+    "guia": {
+      "nombre": "Bartolomé",
+      "apellidos": "Caballero Fernández",
+      "email": "bartolomecaballero@outlook.es",
+      "telefono": "687792580",
+      "dni": "44856687V",
+      "fechaNacimiento": "1976-12-05",
+      "domicilio": "Calle Los Olivos, 4",
+      "poblacion": "La Pobla de Vallbona",
+      "provincia": "Valencia",
+      "codigoPostal": "46185"
+    },
+    "perro": {
+      "nombre": "Lilo",
+      "raza": "Jack Rusell",
+      "microchip": "941010000270100",
+      "fechaNacimiento": "2021-10-10",
+      "sexo": "HEMBRA",
+      "talla": null,
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": [
+      "fila 67: talla no determinada (categoria='Medir') - requiere medir/asignar manualmente"
+    ]
+  },
+  {
+    "fila_excel": 68,
+    "guia": {
+      "nombre": "Susanne",
+      "apellidos": "Kress",
+      "email": "sukre.trans@gmail.com",
+      "telefono": "644246642",
+      "dni": "X0866871R",
+      "fechaNacimiento": "1967-07-10",
+      "domicilio": "Av. de les Magnòlies, 3, A-2º-1ª",
+      "poblacion": "La Pobla de Vallbona",
+      "provincia": "Valencia",
+      "codigoPostal": "46185"
+    },
+    "perro": {
+      "nombre": "Toby",
+      "raza": "mestizo",
+      "microchip": "941000015088112",
+      "fechaNacimiento": "2013-02-14",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": true
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 69,
+    "guia": {
+      "nombre": "Beatriz",
+      "apellidos": "Sanchis Yago",
+      "email": "beatrizsy@hotmail.com",
+      "telefono": "680612872",
+      "dni": "18441794A",
+      "fechaNacimiento": "1985-08-05",
+      "domicilio": "Av. America, 18",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "Floki",
+      "raza": "Border Collie",
+      "microchip": "941000026641089",
+      "fechaNacimiento": "2021-04-24",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 70,
+    "guia": {
+      "nombre": "Jesús",
+      "apellidos": "Valero Lazaro",
+      "email": "jesus_valero_lazaro@hotmail.com",
+      "telefono": "620694843",
+      "dni": "18444103N",
+      "fechaNacimiento": "1982-12-31",
+      "domicilio": "C/JACA número 5 bajo",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "BUDDY",
+      "raza": "Mestizo",
+      "microchip": "941000023258389",
+      "fechaNacimiento": "2018-02-07",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 71,
+    "guia": {
+      "nombre": "Rafael",
+      "apellidos": "Rodriguez Flores",
+      "email": "rafarodriguez88@gmail.com",
+      "telefono": "661349948",
+      "dni": "18450873C",
+      "fechaNacimiento": "1988-04-07",
+      "domicilio": "Calle Río Guadalaviar 62B",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44003"
+    },
+    "perro": {
+      "nombre": "Neo",
+      "raza": "Beagle",
+      "microchip": "941000026642401",
+      "fechaNacimiento": "2021-11-21",
+      "sexo": "MACHO",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 72,
+    "guia": {
+      "nombre": "Cristofol",
+      "apellidos": "Albert Pérez",
+      "email": "mari.buzz.lola@gmail.com",
+      "telefono": "659998185",
+      "dni": "52635360k",
+      "fechaNacimiento": "1971-05-24",
+      "domicilio": "Blasco Ibáñez 11_5",
+      "poblacion": "Catarroja",
+      "provincia": "Valencia",
+      "codigoPostal": "46470"
+    },
+    "perro": {
+      "nombre": "Nioh",
+      "raza": "Border Collie",
+      "microchip": "992000003013977",
+      "fechaNacimiento": "2023-08-24",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 73,
+    "guia": {
+      "nombre": "Eduardo",
+      "apellidos": "Begazo",
+      "email": "erbegazo@yahoo.com",
+      "telefono": "654395584",
+      "dni": "17535294W",
+      "fechaNacimiento": "1983-05-25",
+      "domicilio": "Mestre Villar 15",
+      "poblacion": "Alzira",
+      "provincia": "Valencia",
+      "codigoPostal": "46600"
+    },
+    "perro": {
+      "nombre": "Enchanting Lady Perfection",
+      "raza": "Border Collie",
+      "microchip": "992000003534542",
+      "fechaNacimiento": "2023-12-02",
+      "sexo": "HEMBRA",
+      "talla": null,
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": [
+      "fila 73: talla no determinada (categoria='Medir') - requiere medir/asignar manualmente"
+    ]
+  },
+  {
+    "fila_excel": 74,
+    "guia": {
+      "nombre": "Eduardo",
+      "apellidos": "Begazo",
+      "email": "erbegazo@yahoo.com",
+      "telefono": "654395584",
+      "dni": "17535294W",
+      "fechaNacimiento": "1983-05-25",
+      "domicilio": "Mestre Villar 15",
+      "poblacion": "Alzira",
+      "provincia": "Valencia",
+      "codigoPostal": "46600"
+    },
+    "perro": {
+      "nombre": "Máis de Bejanowski Begazo Jiménez",
+      "raza": "Mestiza",
+      "microchip": "900085000101391",
+      "fechaNacimiento": "2014-08-07",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": true
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 75,
+    "guia": {
+      "nombre": "Rogelio",
+      "apellidos": "Benítez Segovia",
+      "email": "patrigarcia631@gmail.com",
+      "telefono": "643461580",
+      "dni": "18977598E",
+      "fechaNacimiento": "1971-03-06",
+      "domicilio": "Camí Serretes 2",
+      "poblacion": "San Juan de Morò",
+      "provincia": "Castellón",
+      "codigoPostal": "12130"
+    },
+    "perro": {
+      "nombre": "Buddha",
+      "raza": "Border collie",
+      "microchip": "Pastilla",
+      "fechaNacimiento": "2023-07-23",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 76,
+    "guia": {
+      "nombre": "Salvador",
+      "apellidos": "Candel Benedito",
+      "email": "salvadorcandel@gmail.com",
+      "telefono": "675660974",
+      "dni": "20846623k",
+      "fechaNacimiento": "1986-04-11",
+      "domicilio": "María Auxiliadora, 10",
+      "poblacion": "Algemesí",
+      "provincia": "Valencia",
+      "codigoPostal": "46680"
+    },
+    "perro": {
+      "nombre": "Taca",
+      "raza": "Border Collie",
+      "microchip": "992000002148632",
+      "fechaNacimiento": "2023-08-25",
+      "sexo": "HEMBRA",
+      "talla": null,
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": [
+      "fila 76: talla no determinada (categoria='Medir') - requiere medir/asignar manualmente"
+    ]
+  },
+  {
+    "fila_excel": 77,
+    "guia": {
+      "nombre": "Roberto",
+      "apellidos": "González Cayón",
+      "email": "robertogonzalezcayon@hotmail.com",
+      "telefono": "653852104",
+      "dni": "13939778f",
+      "fechaNacimiento": "1973-03-11",
+      "domicilio": "Camí Racó  26",
+      "poblacion": "Riola",
+      "provincia": "Valencia",
+      "codigoPostal": "46417"
+    },
+    "perro": {
+      "nombre": "Trufa",
+      "raza": "Border collie",
+      "microchip": "941000027557402",
+      "fechaNacimiento": "2023-08-24",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 78,
+    "guia": {
+      "nombre": "Claudia",
+      "apellidos": "Peris Monzon",
+      "email": "claudiaacpm@gmail.com",
+      "telefono": "658306914",
+      "dni": "21010078S",
+      "fechaNacimiento": "1999-11-01",
+      "domicilio": "C/ germanias nº4 pta 8",
+      "poblacion": "Catarroja",
+      "provincia": "Valencia",
+      "codigoPostal": "46470"
+    },
+    "perro": {
+      "nombre": "Nabi-ah",
+      "raza": "Perro de aguas español",
+      "microchip": "992000002060930",
+      "fechaNacimiento": "2022-12-24",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 79,
+    "guia": {
+      "nombre": "Alexia",
+      "apellidos": "Mateu García",
+      "email": "danigagr01@gmail.com",
+      "telefono": "626703035",
+      "dni": "No tiene",
+      "fechaNacimiento": "2014-10-12",
+      "domicilio": "Calle La Font 5",
+      "poblacion": "Catarroja",
+      "provincia": "Valencia",
+      "codigoPostal": "46470"
+    },
+    "perro": {
+      "nombre": "Leo de ChukaCan",
+      "raza": "Perro de agua",
+      "microchip": "978101082140500",
+      "fechaNacimiento": "2014-10-12",
+      "sexo": "MACHO",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 82,
+    "guia": {
+      "nombre": "David",
+      "apellidos": "Tortosa Codoñer",
+      "email": "pintajarto@gmail.com",
+      "telefono": "633445553",
+      "dni": "53358635S",
+      "fechaNacimiento": "1981-03-06",
+      "domicilio": "Partida Barbeta 19M",
+      "poblacion": "Torrent",
+      "provincia": "Valencia",
+      "codigoPostal": "46901"
+    },
+    "perro": {
+      "nombre": "Quillo",
+      "raza": "Mestizo",
+      "microchip": "992000003090166",
+      "fechaNacimiento": "2023-03-15",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Picán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 86,
+    "guia": {
+      "nombre": "DAVID",
+      "apellidos": "REDOLAR GARCIA",
+      "email": "davidredolar@gmail.com",
+      "telefono": "630473625",
+      "dni": "18444569H",
+      "fechaNacimiento": "1981-02-21",
+      "domicilio": "CALLE LUIS BUÑUEL 1B 3ºC",
+      "poblacion": "TERUEL",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "PANADERA DE RUBIOALFARO",
+      "raza": "PERRO DE AGUA ESPAÑOL",
+      "microchip": "941000026505988",
+      "fechaNacimiento": "2021-05-09",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 87,
+    "guia": {
+      "nombre": "Antonio Miguel",
+      "apellidos": "Suarez Castillo",
+      "email": "elcorreodetoni13@gmail.com",
+      "telefono": "633404438",
+      "dni": "31861426D",
+      "fechaNacimiento": "1973-06-20",
+      "domicilio": "Ciutat de Melilla 15 5",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46017"
+    },
+    "perro": {
+      "nombre": "Ozzy",
+      "raza": "mestizo",
+      "microchip": "941000021636618",
+      "fechaNacimiento": "2017-03-21",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 90,
+    "guia": {
+      "nombre": "Adrián",
+      "apellidos": "Tarin Mulet",
+      "email": "tarindoscinco@gmail.com",
+      "telefono": "697611340",
+      "dni": "44529232J",
+      "fechaNacimiento": "1994-10-06",
+      "domicilio": "Urb. Altury calle 21 n 45",
+      "poblacion": "Turis",
+      "provincia": "Valencia",
+      "codigoPostal": "46389"
+    },
+    "perro": {
+      "nombre": "Duman",
+      "raza": "Labrador mestizo",
+      "microchip": "941000022440167",
+      "fechaNacimiento": "2018-05-25",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 92,
+    "guia": {
+      "nombre": "Gemma",
+      "apellidos": "Perez martinez",
+      "email": "gemmapeerezmartiinez@gmail.com",
+      "telefono": "727764838",
+      "dni": "24446191C",
+      "fechaNacimiento": "2002-11-23",
+      "domicilio": "Urb.maquiva calle Miramar número 6",
+      "poblacion": "La pobla de Vallbona",
+      "provincia": "Valencia",
+      "codigoPostal": "46185"
+    },
+    "perro": {
+      "nombre": "Kay",
+      "raza": "Border collie",
+      "microchip": "ES 171452165",
+      "fechaNacimiento": "2021-05-03",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 94,
+    "guia": {
+      "nombre": "ENRIQUE",
+      "apellidos": "APARICIO TARIN",
+      "email": "esparicio5221@yahoo.es",
+      "telefono": "653888790",
+      "dni": "19900428T",
+      "fechaNacimiento": "1967-07-29",
+      "domicilio": "AVD De los Serranos, 12",
+      "poblacion": "BETERA",
+      "provincia": "Valencia",
+      "codigoPostal": "46117"
+    },
+    "perro": {
+      "nombre": "HERA",
+      "raza": "PASTOR MALINOISE",
+      "microchip": "941000022573193",
+      "fechaNacimiento": "2018-02-10",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": true
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 96,
+    "guia": {
+      "nombre": "Óscar",
+      "apellidos": "Collado",
+      "email": "estopues@gmail.com",
+      "telefono": "658889996",
+      "dni": "44868612M",
+      "fechaNacimiento": "1979-01-18",
+      "domicilio": "c/ Dels Gremis 43, 16",
+      "poblacion": "València",
+      "provincia": "Valencia",
+      "codigoPostal": "46014"
+    },
+    "perro": {
+      "nombre": "Tesla",
+      "raza": "BC",
+      "microchip": "941000019560908",
+      "fechaNacimiento": "2016-11-09",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "NIVEL_III",
+    "nivel_original": "3.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 97,
+    "guia": {
+      "nombre": "Rogelio",
+      "apellidos": "Benitez Segovia",
+      "email": "shilagility@gmail.com",
+      "telefono": "643 46 15 84",
+      "dni": "18977598E",
+      "fechaNacimiento": "1971-03-06",
+      "domicilio": "Cami Serretes, 2",
+      "poblacion": "Sant Joan de Moro",
+      "provincia": "Castellón",
+      "codigoPostal": "12130"
+    },
+    "perro": {
+      "nombre": "Buddha",
+      "raza": "BORDER COLLIE",
+      "microchip": "99200000325534",
+      "fechaNacimiento": "2023-07-23",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Picán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 99,
+    "guia": {
+      "nombre": "Ana María",
+      "apellidos": "Gil Palmero",
+      "email": "anagil.terapia.ocupacional@gmail.com",
+      "telefono": "649969708",
+      "dni": "33471023C",
+      "fechaNacimiento": "1980-10-27",
+      "domicilio": "Calle Font del Gerro número 64 puerta 9",
+      "poblacion": "Paterna",
+      "provincia": "Valencia",
+      "codigoPostal": "46980"
+    },
+    "perro": {
+      "nombre": "Boira",
+      "raza": "Caniche enano",
+      "microchip": "941000016555373",
+      "fechaNacimiento": "2014-01-17",
+      "sexo": "HEMBRA",
+      "talla": "MINI2",
+      "performance": true
+    },
+    "club": "Ciutat de Valencia",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 100,
+    "guia": {
+      "nombre": "María",
+      "apellidos": "Ferrer Benlloch",
+      "email": "maria.ferrer.benlloch@gmail.com",
+      "telefono": "673094483",
+      "dni": "24377202p",
+      "fechaNacimiento": "1978-02-12",
+      "domicilio": "Calle San Cayetano N 14 PTA 1",
+      "poblacion": "Manises",
+      "provincia": "Valencia",
+      "codigoPostal": "46940"
+    },
+    "perro": {
+      "nombre": "Martina",
+      "raza": "Caniche Enana",
+      "microchip": "941000017457779",
+      "fechaNacimiento": "2014-12-20",
+      "sexo": "HEMBRA",
+      "talla": "MINI1",
+      "performance": true
+    },
+    "club": "Boomerang",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 101,
+    "guia": {
+      "nombre": "Jesús",
+      "apellidos": "Valero Lazaro",
+      "email": "jesus_valero_lazaro@hotmail.com",
+      "telefono": "620694843",
+      "dni": "18444103N",
+      "fechaNacimiento": "1982-12-31",
+      "domicilio": "C/JACA Número 5 bajo",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "Bella",
+      "raza": "Pastor Aleman",
+      "microchip": "941000024877025",
+      "fechaNacimiento": "2020-01-28",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 102,
+    "guia": {
+      "nombre": "David",
+      "apellidos": "Tortosa Codoñer",
+      "email": "pintajarto@gmail.com",
+      "telefono": "633445553",
+      "dni": "53358635S",
+      "fechaNacimiento": "1981-03-06",
+      "domicilio": "Partida Barbeta 19M",
+      "poblacion": "Torrent",
+      "provincia": "Valencia",
+      "codigoPostal": "46901"
+    },
+    "perro": {
+      "nombre": "Ona",
+      "raza": "Border Collie",
+      "microchip": "978142000736011",
+      "fechaNacimiento": "2023-12-19",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Picán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 103,
+    "guia": {
+      "nombre": "Javier",
+      "apellidos": "López Gascón",
+      "email": "javilopezgascon@gmail.com",
+      "telefono": "675395040",
+      "dni": "18444821v",
+      "fechaNacimiento": "1988-11-05",
+      "domicilio": "C/carretera 30",
+      "poblacion": "Escucha",
+      "provincia": "Teruel",
+      "codigoPostal": "44770"
+    },
+    "perro": {
+      "nombre": "Rolo",
+      "raza": "Cocker spaniel",
+      "microchip": "978142000742067",
+      "fechaNacimiento": "2023-12-13",
+      "sexo": "MACHO",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 104,
+    "guia": {
+      "nombre": "ÓSCAR",
+      "apellidos": "COLLADO FERNÁNDEZ",
+      "email": "estopues@gmail.com",
+      "telefono": "658889996",
+      "dni": "44868612M",
+      "fechaNacimiento": "1979-01-18",
+      "domicilio": "C/ Dels Gremis 43,16",
+      "poblacion": "VALÈNCIA",
+      "provincia": "Valencia",
+      "codigoPostal": "46014"
+    },
+    "perro": {
+      "nombre": "SUPRA",
+      "raza": "Border Collie",
+      "microchip": "941010001537634",
+      "fechaNacimiento": "2023-08-24",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 105,
+    "guia": {
+      "nombre": "Marcos",
+      "apellidos": "Cortes Belmonte",
+      "email": "bartorreon@gmail.com",
+      "telefono": "685811226",
+      "dni": "18430090y",
+      "fechaNacimiento": "1970-09-13",
+      "domicilio": "Carretera de Cuenca vieja puerta 71",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44001"
+    },
+    "perro": {
+      "nombre": "Lena",
+      "raza": "Mestiza",
+      "microchip": "941010001150722",
+      "fechaNacimiento": "2024-02-02",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 106,
+    "guia": {
+      "nombre": "Lidia",
+      "apellidos": "Gallego Mico",
+      "email": "gmlidia4@gmail.com",
+      "telefono": "626273015",
+      "dni": "48591573w",
+      "fechaNacimiento": "1987-06-11",
+      "domicilio": "Pla la barca 0094",
+      "poblacion": "Benaguacil",
+      "provincia": "Valencia",
+      "codigoPostal": "46180"
+    },
+    "perro": {
+      "nombre": "Hera",
+      "raza": "Pastor belga holandes",
+      "microchip": "941000022573193",
+      "fechaNacimiento": "2018-02-10",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 108,
+    "guia": {
+      "nombre": "Ana",
+      "apellidos": "Cordón Contreras",
+      "email": "anacordon@outlook.com",
+      "telefono": "686939889",
+      "dni": "85087445A",
+      "fechaNacimiento": "1971-02-28",
+      "domicilio": "Con/Cervol 7",
+      "poblacion": "San Antonio de Benageber",
+      "provincia": "Valencia",
+      "codigoPostal": "46184"
+    },
+    "perro": {
+      "nombre": "Zuri",
+      "raza": "Border Collie",
+      "microchip": "941000025700907",
+      "fechaNacimiento": "2020-07-20",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 109,
+    "guia": {
+      "nombre": "Vicente",
+      "apellidos": "Esteban",
+      "email": "vicenteestebanrisco@gmail.com",
+      "telefono": "645798278",
+      "dni": "24369300H",
+      "fechaNacimiento": "1980-09-12",
+      "domicilio": "Mar de Sargazos, 5",
+      "poblacion": "La Pobla de Vallbona",
+      "provincia": "Valencia",
+      "codigoPostal": "46185"
+    },
+    "perro": {
+      "nombre": "ZIPY",
+      "raza": "Border Collie",
+      "microchip": "4444444999999",
+      "fechaNacimiento": "2020-09-12",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Boomerang",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  },
+  {
+    "fila_excel": 110,
+    "guia": {
+      "nombre": "Ana",
+      "apellidos": "Castellot Abril",
+      "email": "castellotabril@gmail.com",
+      "telefono": "626315493",
+      "dni": "18452888B",
+      "fechaNacimiento": "1991-03-24",
+      "domicilio": "Ronda del parque, 2 1°G",
+      "poblacion": "Teruel",
+      "provincia": "Teruel",
+      "codigoPostal": "44002"
+    },
+    "perro": {
+      "nombre": "Bombón",
+      "raza": "Border Collie",
+      "microchip": "941000027595508",
+      "fechaNacimiento": "2024-04-06",
+      "sexo": "HEMBRA",
+      "talla": "MAXI",
+      "performance": false
+    },
+    "club": "Tucán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 112,
+    "guia": {
+      "nombre": "Cesar",
+      "apellidos": "Fernandez Ortiz",
+      "email": "cesarfernandezvlc@gmail.com",
+      "telefono": "609472693",
+      "dni": "52703495F",
+      "fechaNacimiento": "1968-05-02",
+      "domicilio": "Profesor Angel Lacalle 25",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46014"
+    },
+    "perro": {
+      "nombre": "Sun",
+      "raza": "Parson Terrier",
+      "microchip": "978141041146023",
+      "fechaNacimiento": "2024-02-03",
+      "sexo": "MACHO",
+      "talla": "MEDIA",
+      "performance": false
+    },
+    "club": "Almussafes",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 114,
+    "guia": {
+      "nombre": "MANUEL",
+      "apellidos": "RUIZ ROBERTO",
+      "email": "mani_11@msn.com",
+      "telefono": "686190366",
+      "dni": "22557949D",
+      "fechaNacimiento": "1969-07-24",
+      "domicilio": "Avenida Hermanos Maristas, 14, 21",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46013"
+    },
+    "perro": {
+      "nombre": "LUNA",
+      "raza": "BORDER COLLIE",
+      "microchip": "992000004043627",
+      "fechaNacimiento": "2024-08-15",
+      "sexo": "HEMBRA",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Picán",
+    "nivel": "PRUEBA_ACCESO",
+    "nivel_original": "Prueba de acceso",
+    "warnings": []
+  },
+  {
+    "fila_excel": 115,
+    "guia": {
+      "nombre": "MANUEL",
+      "apellidos": "Ruiz Roberto",
+      "email": "mani_11@msn.com",
+      "telefono": "686190366",
+      "dni": "22557949D",
+      "fechaNacimiento": "1969-07-24",
+      "domicilio": "Avenida Hermanos Maristas 14, 21",
+      "poblacion": "Valencia",
+      "provincia": "Valencia",
+      "codigoPostal": "46013"
+    },
+    "perro": {
+      "nombre": "GANJAH",
+      "raza": "MESTIZO",
+      "microchip": "941000019489714",
+      "fechaNacimiento": "2017-02-15",
+      "sexo": "MACHO",
+      "talla": "LARGE",
+      "performance": false
+    },
+    "club": "Picán",
+    "nivel": "NIVEL_II",
+    "nivel_original": "2.0",
+    "warnings": []
+  }
+]

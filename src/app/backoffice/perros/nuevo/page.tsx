@@ -1,5 +1,6 @@
 import { crearPerroAction } from "@/app/actions/entidades";
-import { TALLAS } from "@/lib/constants";
+import { SEXOS_PERRO } from "@/lib/constants";
+import { CamposTallaNivel } from "../campos-talla-nivel";
 
 export default function NuevoPerroPage() {
   return (
@@ -15,19 +16,25 @@ export default function NuevoPerroPage() {
           <input name="raza" className="input" />
         </Field>
 
-        <Field label="Talla" required>
-          <select name="talla" required className="input">
-            <option value="">— Selecciona —</option>
-            {TALLAS.map((t) => (
-              <option key={t.value} value={t.value}>
-                {t.label}
+        <CamposTallaNivel />
+
+        <Field label="Altura a la cruz (cm)">
+          <input name="tallaCm" type="number" step="0.1" className="input" />
+        </Field>
+
+        <Field label="Sexo (opcional)">
+          <select name="sexo" className="input">
+            <option value="">— Sin especificar —</option>
+            {SEXOS_PERRO.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.label}
               </option>
             ))}
           </select>
         </Field>
 
-        <Field label="Altura a la cruz (cm)">
-          <input name="tallaCm" type="number" step="0.1" className="input" />
+        <Field label="Microchip (opcional)">
+          <input name="microchip" className="input" />
         </Field>
 
         <Field label="Fecha de nacimiento">

@@ -21,6 +21,38 @@ export default async function NuevaGuiaPage() {
           <input name="licencia" className="input" />
         </Field>
 
+        <Field label="Email (opcional)">
+          <input name="email" type="email" className="input" />
+        </Field>
+
+        <Field label="Teléfono (opcional)">
+          <input name="telefono" type="tel" className="input" />
+        </Field>
+
+        <Field label="DNI/NIE/Pasaporte (opcional)">
+          <input name="dni" className="input" />
+        </Field>
+
+        <Field label="Fecha de nacimiento (opcional)">
+          <input name="fechaNacimiento" type="date" className="input" />
+        </Field>
+
+        <Field label="Domicilio (opcional)">
+          <input name="domicilio" className="input" />
+        </Field>
+
+        <Field label="Población (opcional)">
+          <input name="poblacion" className="input" />
+        </Field>
+
+        <Field label="Provincia (opcional)">
+          <input name="provincia" className="input" />
+        </Field>
+
+        <Field label="Código postal (opcional)">
+          <input name="codigoPostal" className="input" />
+        </Field>
+
         <Field label="Club">
           <select name="clubId" className="input">
             <option value="">— Sin especificar —</option>

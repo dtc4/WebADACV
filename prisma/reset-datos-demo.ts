@@ -40,6 +40,7 @@ async function main() {
   // primero lo que depende de otra tabla, al final lo que no depende de nada.
   const resultado = await prisma.$transaction([
     prisma.resultado.deleteMany(),
+    prisma.inscripcion.deleteMany(),
     prisma.foto.deleteMany(),
     prisma.clasificacionEntrada.deleteMany(),
     prisma.competicion.deleteMany(),
@@ -61,6 +62,7 @@ async function main() {
 
   const nombres = [
     "resultados",
+    "inscripciones",
     "fotos",
     "entradas de clasificación",
     "competiciones",

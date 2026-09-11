@@ -2,8 +2,18 @@ import { prisma } from "@/lib/prisma";
 import type { CategoriaTalla, NivelCompeticion } from "@prisma/client";
 
 /** Todas las lecturas usadas por la web pública viven aquí, para que
- * ninguna página se salte el filtro `estado: "PUBLICADA"` /
- * `publicado: true` por accidente. */
+ * ninguna página se salte el filtro `configurada: true` (para que la
+ * jornada aparezca en el calendario) o `publicado: true` (para que sus
+ * resultados sean visibles) por accidente.
+ *
+ * Nota: una jornada aparece en el calendario público en cuanto secretaría
+ * le pone fecha y lugar reales (`configurada: true`), aunque todavía esté
+ * en borrador y sin resultados. `estado: "PUBLICADA"` ya no es la puerta
+ * de entrada al calendario — sigue siendo la puerta de entrada a los
+ * resultados: `publicarJornadaAction`/`despublicarJornadaAction` son las
+ * únicas que tocan `Resultado.publicado`, así que basta con filtrar por
+ * ese campo para que los resultados de una jornada aún no publicada nunca
+ * lleguen a la web pública. */
 
 export function getTemporadaActiva() {
   return prisma.temporada.findFirst({ where: { activa: true }, orderBy: { fechaInicio: "desc" } });
@@ -11,7 +21,7 @@ export function getTemporadaActiva() {
 
 export function getJornadasPublicadas(temporadaId: string) {
   return prisma.jornada.findMany({
-    where: { temporadaId, estado: "PUBLICADA" },
+    where: { temporadaId, configurada: true },
     include: { club: true, juez: true },
     orderBy: { fecha: "asc" },
   });
@@ -19,7 +29,7 @@ export function getJornadasPublicadas(temporadaId: string) {
 
 export function getProximaJornada(temporadaId: string) {
   return prisma.jornada.findFirst({
-    where: { temporadaId, estado: "PUBLICADA", fecha: { gte: new Date() } },
+    where: { temporadaId, configurada: true, fecha: { gte: new Date() } },
     include: { club: true, juez: true },
     orderBy: { fecha: "asc" },
   });
@@ -27,7 +37,7 @@ export function getProximaJornada(temporadaId: string) {
 
 export async function getJornadaPublicaConResultados(jornadaId: string) {
   const jornada = await prisma.jornada.findFirst({
-    where: { id: jornadaId, estado: "PUBLICADA" },
+    where: { id: jornadaId, configurada: true },
     include: {
       club: true,
       juez: true,

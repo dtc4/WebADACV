@@ -32,6 +32,10 @@ enum Rol {
 enum NivelCompeticion {
   NIVEL_II
   NIVEL_III
+  // Categoría única para las tallas que no se dividen en grado (Mini 1,
+  // Mini 2, Media: tienen tan pocos ejemplares que compiten todos juntos).
+  // Solo Maxi y Large usan NIVEL_II/NIVEL_III de verdad.
+  SIN_GRADO
   PERFORMANCE
 }
 
@@ -44,6 +48,11 @@ enum Talla {
   MEDIA
   MAXI
   LARGE
+}
+
+enum SexoPerro {
+  MACHO
+  HEMBRA
 }
 
 // Agrupación de Talla a efectos de CLASIFICACIÓN (el reglamento junta
@@ -147,6 +156,11 @@ model ReglaModalidad {
   penalizacionPorSegundo Float @default(1)
   penalizacionEliminacion Float @default(50)
 
+  // Un binomio inscrito que no se presenta a su manga recibe esta
+  // penalización fija (en vez de la de eliminación normal) y SÍ cuenta
+  // para la clasificación de temporada, como una prueba disputada más.
+  penalizacionNoPresentado Float @default(75)
+
   // Causa de eliminación por acumulación de rehúses (reglamento: al 3er
   // rehúse se elimina, con independencia del número de faltas).
   rehusesParaEliminar Int @default(3)
@@ -215,8 +229,20 @@ model Guia {
   nombre    String
   apellidos String
   licencia  String?
-  clubId    String?
-  club      Club?   @relation(fields: [clubId], references: [id])
+
+  // Datos personales de la ficha/tarjeta deportiva en papel. Nullable porque
+  // los guías dados de alta antes de recoger esta información no la tienen.
+  email           String?
+  telefono        String?
+  dni             String? // DNI / NIE / pasaporte
+  fechaNacimiento DateTime?
+  domicilio       String?
+  poblacion       String?
+  provincia       String?
+  codigoPostal    String?
+
+  clubId String?
+  club   Club?   @relation(fields: [clubId], references: [id])
 
   binomios Binomio[]
 
@@ -224,9 +250,25 @@ model Guia {
 }
 
 model Perro {
-  id              String    @id @default(cuid())
-  nombre          String
-  raza            String?
+  id     String  @id @default(cuid())
+  nombre String
+  raza   String?
+
+  // Datos de la ficha/tarjeta deportiva en papel. Nullable porque los perros
+  // dados de alta antes de recoger esta información no la tienen.
+  microchip String?
+  sexo      SexoPerro?
+
+  // Nivel de competición ACTUAL del perro, editado a mano por secretaría
+  // (no por temporada: a diferencia de BinomioTemporada.nivel, más abajo,
+  // este es el único campo que la app usa de verdad hoy para saber a qué
+  // nivel se inscribe/sortea un binomio, porque BinomioTemporada nunca
+  // llegó a tener una pantalla desde la que rellenarlo). NIVEL_II/NIVEL_III
+  // solo tienen sentido si `talla` es MAXI o LARGE; el resto de tallas
+  // llevan SIN_GRADO (o PERFORMANCE si compite en ese programa). Nullable
+  // hasta que secretaría se lo asigna.
+  nivel NivelCompeticion?
+
   tallaCm         Float?
   talla           Talla
   fechaNacimiento DateTime?
@@ -250,6 +292,7 @@ model Binomio {
   temporadas          BinomioTemporada[]
   resultados          Resultado[]
   clasificaciones     ClasificacionEntrada[]
+  inscripciones       Inscripcion[]
 
   @@unique([guiaId, perroId])
   @@map("binomios")
@@ -308,8 +351,9 @@ model Jornada {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  competiciones Competicion[]
-  galerias      Galeria[]
+  competiciones  Competicion[]
+  galerias       Galeria[]
+  inscripciones  Inscripcion[]
 
   @@unique([temporadaId, numero])
   @@map("jornadas")
@@ -342,6 +386,21 @@ model Competicion {
   @@map("competiciones")
 }
 
+// Un binomio apuntado (inscrito) a una jornada concreta. Lo gestiona
+// secretaría/la mesa desde el backoffice — los guías no se apuntan ellos
+// mismos. Sirve de base para el sorteo del orden de salida.
+model Inscripcion {
+  id        String   @id @default(cuid())
+  jornadaId String
+  jornada   Jornada  @relation(fields: [jornadaId], references: [id], onDelete: Cascade)
+  binomioId String
+  binomio   Binomio  @relation(fields: [binomioId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([jornadaId, binomioId])
+  @@map("inscripciones")
+}
+
 // ---------------------------------------------------------------------------
 // Resultados (por manga) y Clasificación (por temporada) — conceptos
 // deliberadamente separados, tal como exige el PRD.
@@ -360,6 +419,11 @@ model Resultado {
   rehuses  Int     @default(0)
   eliminado         Boolean @default(false)
   motivoEliminacion String?
+  // Un no presentado también se guarda como `eliminado: true` (para que
+  // toda la lógica que ya filtra por eliminado lo siga tratando igual),
+  // pero con este campo aparte para poder mostrarlo en la interfaz como
+  // "No presentado" en vez de una eliminación normal.
+  noPresentado      Boolean @default(false)
 
   // Campos calculados por el motor de reglas (src/lib/rules/engine.ts) y
   // almacenados para lectura rápida; siempre recalculables a partir de los

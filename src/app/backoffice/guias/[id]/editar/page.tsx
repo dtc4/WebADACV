@@ -26,6 +26,43 @@ export default async function EditarGuiaPage({ params }: { params: Promise<{ id:
           <input name="licencia" defaultValue={guia.licencia ?? ""} className="input" />
         </Field>
 
+        <Field label="Email (opcional)">
+          <input name="email" type="email" defaultValue={guia.email ?? ""} className="input" />
+        </Field>
+
+        <Field label="Teléfono (opcional)">
+          <input name="telefono" type="tel" defaultValue={guia.telefono ?? ""} className="input" />
+        </Field>
+
+        <Field label="DNI/NIE/Pasaporte (opcional)">
+          <input name="dni" defaultValue={guia.dni ?? ""} className="input" />
+        </Field>
+
+        <Field label="Fecha de nacimiento (opcional)">
+          <input
+            name="fechaNacimiento"
+            type="date"
+            defaultValue={guia.fechaNacimiento ? new Date(guia.fechaNacimiento).toISOString().slice(0, 10) : ""}
+            className="input"
+          />
+        </Field>
+
+        <Field label="Domicilio (opcional)">
+          <input name="domicilio" defaultValue={guia.domicilio ?? ""} className="input" />
+        </Field>
+
+        <Field label="Población (opcional)">
+          <input name="poblacion" defaultValue={guia.poblacion ?? ""} className="input" />
+        </Field>
+
+        <Field label="Provincia (opcional)">
+          <input name="provincia" defaultValue={guia.provincia ?? ""} className="input" />
+        </Field>
+
+        <Field label="Código postal (opcional)">
+          <input name="codigoPostal" defaultValue={guia.codigoPostal ?? ""} className="input" />
+        </Field>
+
         <Field label="Club">
           <select name="clubId" defaultValue={guia.clubId ?? ""} className="input">
             <option value="">— Sin especificar —</option>

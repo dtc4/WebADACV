@@ -25,7 +25,12 @@ export default async function JornadaPublicaPage({ params }: { params: Promise<{
         {jornada.juez ? ` · Juez principal: ${jornada.juez.nombre}` : ""}
       </p>
 
-      {jornada.competiciones.length === 0 ? (
+      {jornada.estado !== "PUBLICADA" ? (
+        <p className="text-black/50">
+          Los resultados de esta jornada todavía no se han publicado. Vuelve a consultarlos cuando
+          termine de celebrarse.
+        </p>
+      ) : jornada.competiciones.length === 0 ? (
         <p className="text-black/50">Todavía no hay resultados publicados de esta jornada.</p>
       ) : (
         <div className="space-y-10">

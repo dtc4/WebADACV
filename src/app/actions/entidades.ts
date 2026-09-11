@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
-import type { Talla } from "@prisma/client";
+import type { Talla, SexoPerro, NivelCompeticion } from "@prisma/client";
+import { nivelValidoParaTalla } from "@/lib/constants";
 
 function requireSession() {
   return getSession();
@@ -125,11 +126,34 @@ export async function crearGuiaAction(formData: FormData) {
   const nombre = String(formData.get("nombre") ?? "").trim();
   const apellidos = String(formData.get("apellidos") ?? "").trim();
   const licencia = String(formData.get("licencia") ?? "").trim() || null;
+  const email = String(formData.get("email") ?? "").trim() || null;
+  const telefono = String(formData.get("telefono") ?? "").trim() || null;
+  const dni = String(formData.get("dni") ?? "").trim() || null;
+  const fechaNacimiento = String(formData.get("fechaNacimiento") ?? "");
+  const domicilio = String(formData.get("domicilio") ?? "").trim() || null;
+  const poblacion = String(formData.get("poblacion") ?? "").trim() || null;
+  const provincia = String(formData.get("provincia") ?? "").trim() || null;
+  const codigoPostal = String(formData.get("codigoPostal") ?? "").trim() || null;
   const clubId = String(formData.get("clubId") ?? "") || null;
 
   if (!nombre || !apellidos) throw new Error("Faltan campos obligatorios: nombre y apellidos.");
 
-  const guia = await prisma.guia.create({ data: { nombre, apellidos, licencia, clubId } });
+  const guia = await prisma.guia.create({
+    data: {
+      nombre,
+      apellidos,
+      licencia,
+      email,
+      telefono,
+      dni,
+      fechaNacimiento: fechaNacimiento ? new Date(fechaNacimiento) : null,
+      domicilio,
+      poblacion,
+      provincia,
+      codigoPostal,
+      clubId,
+    },
+  });
 
   revalidatePath("/backoffice/guias");
   redirect(`/backoffice/guias/${guia.id}/editar`);
@@ -141,11 +165,35 @@ export async function actualizarGuiaAction(formData: FormData) {
   const nombre = String(formData.get("nombre") ?? "").trim();
   const apellidos = String(formData.get("apellidos") ?? "").trim();
   const licencia = String(formData.get("licencia") ?? "").trim() || null;
+  const email = String(formData.get("email") ?? "").trim() || null;
+  const telefono = String(formData.get("telefono") ?? "").trim() || null;
+  const dni = String(formData.get("dni") ?? "").trim() || null;
+  const fechaNacimiento = String(formData.get("fechaNacimiento") ?? "");
+  const domicilio = String(formData.get("domicilio") ?? "").trim() || null;
+  const poblacion = String(formData.get("poblacion") ?? "").trim() || null;
+  const provincia = String(formData.get("provincia") ?? "").trim() || null;
+  const codigoPostal = String(formData.get("codigoPostal") ?? "").trim() || null;
   const clubId = String(formData.get("clubId") ?? "") || null;
 
   if (!guiaId || !nombre || !apellidos) throw new Error("Faltan campos obligatorios.");
 
-  await prisma.guia.update({ where: { id: guiaId }, data: { nombre, apellidos, licencia, clubId } });
+  await prisma.guia.update({
+    where: { id: guiaId },
+    data: {
+      nombre,
+      apellidos,
+      licencia,
+      email,
+      telefono,
+      dni,
+      fechaNacimiento: fechaNacimiento ? new Date(fechaNacimiento) : null,
+      domicilio,
+      poblacion,
+      provincia,
+      codigoPostal,
+      clubId,
+    },
+  });
 
   revalidatePath("/backoffice/guias");
   revalidatePath(`/backoffice/guias/${guiaId}/editar`);
@@ -178,12 +226,41 @@ export async function eliminarGuiaAction(formData: FormData) {
 // Perro
 // ---------------------------------------------------------------------------
 
+// Valores válidos del enum SexoPerro para validar el desplegable (opcional:
+// se guarda null si no se envía o si llega un valor que no reconocemos).
+const SEXOS_PERRO_VALIDOS: SexoPerro[] = ["MACHO", "HEMBRA"];
+
+function parseSexoPerro(formData: FormData): SexoPerro | null {
+  const valor = String(formData.get("sexo") ?? "");
+  return (SEXOS_PERRO_VALIDOS as string[]).includes(valor) ? (valor as SexoPerro) : null;
+}
+
+// Valores válidos del enum NivelCompeticion para validar el desplegable de
+// nivel del perro (igual que SEXOS_PERRO_VALIDOS arriba: null si no se
+// envía o si llega algo que no reconocemos).
+const NIVELES_VALIDOS: NivelCompeticion[] = ["NIVEL_II", "NIVEL_III", "SIN_GRADO", "PERFORMANCE"];
+
+// Nivel II/III solo existen para Maxi y Large, y SIN_GRADO es justo lo
+// contrario (ver nivelValidoParaTalla en constants.ts): si llega una
+// combinación que no tiene sentido para la talla, se descarta en vez de
+// guardarla (defensa por si el formulario llega cacheado o manipulado:
+// el desplegable ya no ofrece esa combinación desde CamposTallaNivel).
+function parseNivelCompeticion(formData: FormData, talla: Talla): NivelCompeticion | null {
+  const valor = String(formData.get("nivel") ?? "");
+  if (!(NIVELES_VALIDOS as string[]).includes(valor)) return null;
+  const nivel = valor as NivelCompeticion;
+  return nivelValidoParaTalla(talla, nivel) ? nivel : null;
+}
+
 export async function crearPerroAction(formData: FormData) {
   await requireSession();
   const nombre = String(formData.get("nombre") ?? "").trim();
   const raza = String(formData.get("raza") ?? "").trim() || null;
+  const microchip = String(formData.get("microchip") ?? "").trim() || null;
+  const sexo = parseSexoPerro(formData);
   const tallaCm = formData.get("tallaCm") ? Number(formData.get("tallaCm")) : null;
   const talla = String(formData.get("talla") ?? "") as Talla;
+  const nivel = parseNivelCompeticion(formData, talla);
   const fechaNacimiento = String(formData.get("fechaNacimiento") ?? "");
 
   if (!nombre || !talla) throw new Error("Faltan campos obligatorios: nombre y talla.");
@@ -192,6 +269,9 @@ export async function crearPerroAction(formData: FormData) {
     data: {
       nombre,
       raza,
+      microchip,
+      sexo,
+      nivel,
       tallaCm,
       talla,
       fechaNacimiento: fechaNacimiento ? new Date(fechaNacimiento) : null,
@@ -207,8 +287,11 @@ export async function actualizarPerroAction(formData: FormData) {
   const perroId = String(formData.get("perroId") ?? "");
   const nombre = String(formData.get("nombre") ?? "").trim();
   const raza = String(formData.get("raza") ?? "").trim() || null;
+  const microchip = String(formData.get("microchip") ?? "").trim() || null;
+  const sexo = parseSexoPerro(formData);
   const tallaCm = formData.get("tallaCm") ? Number(formData.get("tallaCm")) : null;
   const talla = String(formData.get("talla") ?? "") as Talla;
+  const nivel = parseNivelCompeticion(formData, talla);
   const fechaNacimiento = String(formData.get("fechaNacimiento") ?? "");
 
   if (!perroId || !nombre || !talla) throw new Error("Faltan campos obligatorios.");
@@ -218,6 +301,9 @@ export async function actualizarPerroAction(formData: FormData) {
     data: {
       nombre,
       raza,
+      microchip,
+      sexo,
+      nivel,
       tallaCm,
       talla,
       fechaNacimiento: fechaNacimiento ? new Date(fechaNacimiento) : null,

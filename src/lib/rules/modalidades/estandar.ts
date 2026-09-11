@@ -26,6 +26,23 @@ export function calcularResultadoEstandar(
   parametrosTiempo: ParametrosTiempoCompeticion,
   regla: ReglaModalidadConfig
 ): ResultadoCalculado {
+  // No presentado tiene prioridad sobre cualquier otro dato crudo: un
+  // binomio que no se presenta a su manga recibe la penalización fija
+  // configurada (75 puntos por defecto), no la de eliminación normal, y
+  // no tiene TRS/TRM/tiempo que calcular.
+  if (datos.noPresentado) {
+    return {
+      trs: null,
+      trm: null,
+      penalizacionTiempo: null,
+      penalizacionTotal: regla.penalizacionNoPresentado,
+      calificacion: "ELIMINADO",
+      eliminado: true,
+      motivoEliminacion: "No presentado",
+      noPresentado: true,
+    };
+  }
+
   const trs = calcularTRS(parametrosTiempo);
   const trm = calcularTRM(trs, parametrosTiempo.trmFactor, regla);
 
@@ -51,6 +68,7 @@ export function calcularResultadoEstandar(
       calificacion: "ELIMINADO",
       eliminado: true,
       motivoEliminacion,
+      noPresentado: false,
     };
   }
 
@@ -72,6 +90,7 @@ export function calcularResultadoEstandar(
     calificacion: calcularCalificacion(penalizacionTotal, regla.bandasCalificacion),
     eliminado: false,
     motivoEliminacion: null,
+    noPresentado: false,
   };
 }
 

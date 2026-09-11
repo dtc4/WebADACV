@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import { getPerroPorId } from "@/lib/data/backoffice";
 import { actualizarPerroAction, eliminarPerroAction } from "@/app/actions/entidades";
-import { TALLAS } from "@/lib/constants";
+import { SEXOS_PERRO } from "@/lib/constants";
+import { CamposTallaNivel } from "../../campos-talla-nivel";
 
 export default async function EditarPerroPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -23,18 +24,25 @@ export default async function EditarPerroPage({ params }: { params: Promise<{ id
           <input name="raza" defaultValue={perro.raza ?? ""} className="input" />
         </Field>
 
-        <Field label="Talla" required>
-          <select name="talla" defaultValue={perro.talla} required className="input">
-            {TALLAS.map((t) => (
-              <option key={t.value} value={t.value}>
-                {t.label}
+        <CamposTallaNivel defaultTalla={perro.talla} defaultNivel={perro.nivel} />
+
+        <Field label="Altura a la cruz (cm)">
+          <input name="tallaCm" type="number" step="0.1" defaultValue={perro.tallaCm ?? ""} className="input" />
+        </Field>
+
+        <Field label="Sexo (opcional)">
+          <select name="sexo" defaultValue={perro.sexo ?? ""} className="input">
+            <option value="">— Sin especificar —</option>
+            {SEXOS_PERRO.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.label}
               </option>
             ))}
           </select>
         </Field>
 
-        <Field label="Altura a la cruz (cm)">
-          <input name="tallaCm" type="number" step="0.1" defaultValue={perro.tallaCm ?? ""} className="input" />
+        <Field label="Microchip (opcional)">
+          <input name="microchip" defaultValue={perro.microchip ?? ""} className="input" />
         </Field>
 
         <Field label="Fecha de nacimiento">

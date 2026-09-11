@@ -14,6 +14,7 @@
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
     "db:reset-demo": "tsx prisma/reset-datos-demo.ts",
+    "db:importar-binomios": "tsx prisma/importar-binomios-excel.ts",
     "db:studio": "prisma studio",
     "postinstall": "prisma generate"
   },

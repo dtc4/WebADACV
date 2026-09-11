@@ -89,6 +89,7 @@ export async function crearTemporadaAction(formData: FormData) {
           penalizacionRehuse: 5,
           penalizacionPorSegundo: 1,
           penalizacionEliminacion: 50,
+          penalizacionNoPresentado: 75,
           rehusesParaEliminar: 3,
           trmFactorMin: 1.5,
           trmFactorMax: 2.0,

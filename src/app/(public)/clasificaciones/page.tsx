@@ -10,7 +10,9 @@ export default async function ClasificacionesPublicasPage({
 }) {
   const params = await searchParams;
   const temporada = await getTemporadaActiva();
-  const nivel = (params?.nivel ?? "NIVEL_III") as NivelCompeticion;
+  // Nivel III × Media no existe (Media compite "sin grado"): se usa como
+  // filtro por defecto una combinación que sí existe de verdad.
+  const nivel = (params?.nivel ?? "SIN_GRADO") as NivelCompeticion;
   const categoria = (params?.categoria ?? "MEDIA") as CategoriaTalla;
 
   const clasificacion = temporada

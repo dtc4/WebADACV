@@ -18,8 +18,28 @@ export const MODALIDADES: { value: string; label: string }[] = [
 export const NIVELES: { value: string; label: string }[] = [
   { value: "NIVEL_II", label: "Nivel II" },
   { value: "NIVEL_III", label: "Nivel III" },
+  { value: "SIN_GRADO", label: "Sin grado (categoría única)" },
   { value: "PERFORMANCE", label: "Performance" },
 ];
+
+// Solo Maxi y Large se dividen en Nivel II / Nivel III: el resto de tallas
+// (Mini 1, Mini 2, Media) tienen tan pocos ejemplares que compiten todos
+// juntos en una única categoría ("SIN_GRADO"). Performance tampoco
+// distingue grado en ninguna talla. Se usa tanto en los formularios (para
+// no ofrecer una combinación que no tiene sentido) como al guardar (para
+// no dejarla guardar aunque llegue de todas formas).
+export const TALLAS_CON_GRADO = ["MAXI", "LARGE"];
+
+/** ¿Tiene sentido este nivel para esta talla? NIVEL_II/NIVEL_III solo
+ * existen en Maxi/Large; SIN_GRADO es justo lo contrario (las tallas que
+ * NO se dividen en grado); PERFORMANCE vale para cualquier talla. */
+export function nivelValidoParaTalla(talla: string, nivel: string): boolean {
+  if (nivel === "PERFORMANCE") return true;
+  const conGrado = TALLAS_CON_GRADO.includes(talla);
+  if (nivel === "SIN_GRADO") return !conGrado;
+  if (nivel === "NIVEL_II" || nivel === "NIVEL_III") return conGrado;
+  return false;
+}
 
 export const TALLAS: { value: string; label: string }[] = [
   { value: "MINI1", label: "Mini 1 (<30cm)" },
@@ -27,6 +47,11 @@ export const TALLAS: { value: string; label: string }[] = [
   { value: "MEDIA", label: "Media (36–43cm)" },
   { value: "MAXI", label: "Maxi (43–51cm)" },
   { value: "LARGE", label: "Large (>51cm)" },
+];
+
+export const SEXOS_PERRO: { value: string; label: string }[] = [
+  { value: "MACHO", label: "Macho" },
+  { value: "HEMBRA", label: "Hembra" },
 ];
 
 export const CATEGORIAS_TALLA: { value: string; label: string }[] = [
