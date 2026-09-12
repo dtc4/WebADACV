@@ -1,12 +1,23 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getJornadaPublicaConResultados } from "@/lib/data/public";
+import { getJornadaPublicaConResultados, getClasificacionesJornada } from "@/lib/data/public";
 import { ETIQUETA_MODALIDAD, ETIQUETA_NIVEL, ETIQUETA_TALLA_CORTA, ETIQUETA_CALIFICACION, ESTILO_CALIFICACION } from "@/lib/constants";
+import { ETIQUETA_CATEGORIA } from "@/lib/rules/categorias";
+
+const MEDALLA = ["🥇", "🥈", "🥉"];
 
 export default async function JornadaPublicaPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const jornada = await getJornadaPublicaConResultados(id);
   if (!jornada) notFound();
+
+  const clasificacionesJornada = await getClasificacionesJornada(id);
+  const gruposClasificacion = new Map<string, typeof clasificacionesJornada>();
+  for (const fila of clasificacionesJornada) {
+    const clave = `${fila.nivel}:${fila.categoria}`;
+    if (!gruposClasificacion.has(clave)) gruposClasificacion.set(clave, []);
+    gruposClasificacion.get(clave)!.push(fila);
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
@@ -91,6 +102,80 @@ export default async function JornadaPublicaPage({ params }: { params: Promise<{
           ))}
         </div>
       )}
+
+      {gruposClasificacion.size > 0 ? (
+        <div className="space-y-10 mt-12">
+          <h2 className="font-display text-2xl">Clasificación de la jornada</h2>
+          {Array.from(gruposClasificacion.entries()).map(([clave, filas]) => {
+            const [nivel, categoria] = clave.split(":");
+            const general = filas.find((f) => f.agrupacion === "GENERAL");
+            const porModalidad = filas.filter((f) => f.agrupacion !== "GENERAL");
+            return (
+              <section key={clave}>
+                <h3 className="font-semibold text-lg mb-1">
+                  {ETIQUETA_NIVEL[nivel] ?? nivel} · {ETIQUETA_CATEGORIA[categoria as keyof typeof ETIQUETA_CATEGORIA] ?? categoria}
+                </h3>
+                <p className="text-xs text-black/50 mb-3">
+                  Se dan trofeos a los tres primeros de la general de la jornada y de cada modalidad. El 1º,
+                  2º y 3º de la general además restan puntos de bonificación (−8/−6/−2) tanto de esta jornada
+                  como de la clasificación de temporada.
+                </p>
+
+                {porModalidad.length > 0 ? (
+                  <div className="flex flex-wrap gap-3 mb-4">
+                    {porModalidad.map((f) => (
+                      <div key={f.id} className="card px-4 py-3 text-sm">
+                        <p className="font-semibold mb-1">{ETIQUETA_MODALIDAD[f.agrupacion] ?? f.agrupacion}</p>
+                        {f.entradas.slice(0, 3).map((e, i) => (
+                          <p key={e.id} className="text-black/70">
+                            {MEDALLA[i]} {e.binomio.guia.nombre} {e.binomio.guia.apellidos} · {e.binomio.perro.nombre}
+                          </p>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+
+                {general && general.entradas.length > 0 ? (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm card">
+                      <thead>
+                        <tr className="text-left text-black/50 border-b border-black/10">
+                          <th className="py-3 px-4">Pos.</th>
+                          <th className="py-3 px-4">Binomio</th>
+                          <th className="py-3 px-4">Club</th>
+                          <th className="py-3 px-4">Puntos</th>
+                          <th className="py-3 px-4">Desc.</th>
+                          <th className="py-3 px-4">Total jornada</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {general.entradas.map((e, i) => (
+                          <tr
+                            key={e.id}
+                            className={`border-b border-black/5 last:border-0 ${i < 3 ? "bg-brand-yellow/10" : ""}`}
+                          >
+                            <td className="py-3 px-4 font-semibold">
+                              {MEDALLA[i] ?? ""} {e.posicion}
+                            </td>
+                            <td className="py-3 px-4">
+                              {e.binomio.guia.nombre} {e.binomio.guia.apellidos} · {e.binomio.perro.nombre}
+                            </td>
+                            <td className="py-3 px-4 text-black/60">{e.binomio.club?.nombre ?? "—"}</td>
+                            <td className="py-3 px-4">{e.puntos.toFixed(2)}</td>
+                            <td className="py-3 px-4">{e.bonus !== 0 ? e.bonus : "—"}</td>
+                            <td className="py-3 px-4 font-semibold">{(e.puntos + e.bonus).toFixed(2)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : null}
+              </section>
+            );
+          })}
+        </div>
+      ) : null}
 
       {jornada.galerias.length > 0 ? (
         <section className="mt-12">

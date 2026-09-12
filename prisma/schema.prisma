@@ -289,10 +289,11 @@ model Binomio {
   club     Club?   @relation(fields: [clubId], references: [id])
   activo   Boolean @default(true)
 
-  temporadas          BinomioTemporada[]
-  resultados          Resultado[]
-  clasificaciones     ClasificacionEntrada[]
-  inscripciones       Inscripcion[]
+  temporadas               BinomioTemporada[]
+  resultados               Resultado[]
+  clasificaciones          ClasificacionEntrada[]
+  clasificacionesJornada   ClasificacionJornadaEntrada[]
+  inscripciones            Inscripcion[]
 
   @@unique([guiaId, perroId])
   @@map("binomios")
@@ -351,9 +352,10 @@ model Jornada {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  competiciones  Competicion[]
-  galerias       Galeria[]
-  inscripciones  Inscripcion[]
+  competiciones          Competicion[]
+  galerias               Galeria[]
+  inscripciones          Inscripcion[]
+  clasificacionesJornada ClasificacionJornada[]
 
   @@unique([temporadaId, numero])
   @@map("jornadas")
@@ -473,6 +475,51 @@ model ClasificacionEntrada {
 
   @@unique([clasificacionTemporadaId, binomioId])
   @@map("clasificacion_entradas")
+}
+
+// Clasificación de UNA jornada concreta (además de la de temporada, que
+// acumula todas las jornadas): cada club da trofeo a los tres primeros de
+// cada jornada, tanto de cada modalidad por separado (Agility Standard,
+// Jumping...) como de la general de esa jornada (todas las modalidades de
+// ese nivel/categoría disputadas ese día, sumadas). `agrupacion` guarda el
+// código de Modalidad ("AGILITY_STANDARD", "JUMPING"...) para las filas por
+// modalidad, o el valor especial "GENERAL" para la combinada — se usa un
+// String en vez del enum Modalidad para poder representar "GENERAL" sin
+// forzar un valor falso en ese enum (que representa disciplinas reales).
+model ClasificacionJornada {
+  id          String              @id @default(cuid())
+  jornadaId   String
+  jornada     Jornada             @relation(fields: [jornadaId], references: [id], onDelete: Cascade)
+  nivel       NivelCompeticion
+  categoria   CategoriaTalla
+  agrupacion  String
+  estado      EstadoClasificacion @default(PENDIENTE)
+  actualizadaEn DateTime          @default(now())
+  publicadaEn   DateTime?
+
+  entradas ClasificacionJornadaEntrada[]
+
+  @@unique([jornadaId, nivel, categoria, agrupacion])
+  @@map("clasificaciones_jornada")
+}
+
+model ClasificacionJornadaEntrada {
+  id                     String               @id @default(cuid())
+  clasificacionJornadaId String
+  clasificacionJornada   ClasificacionJornada @relation(fields: [clasificacionJornadaId], references: [id], onDelete: Cascade)
+  binomioId              String
+  binomio                Binomio              @relation(fields: [binomioId], references: [id])
+
+  posicion Int
+  puntos   Float // penalización acumulada ese día en esa agrupación (sin el bono)
+  // Bonificación de puntos por podio EN LA GENERAL de la jornada, que se
+  // resta de la clasificación de temporada (-8/-6/-2 para 1º/2º/3º según
+  // indicó David; 0 en el resto de filas y siempre 0 en las filas por
+  // modalidad, que son solo para trofeo, no dan bonificación).
+  bonus    Float @default(0)
+
+  @@unique([clasificacionJornadaId, binomioId])
+  @@map("clasificacion_jornada_entradas")
 }
 
 // ---------------------------------------------------------------------------

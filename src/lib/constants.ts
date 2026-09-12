@@ -75,6 +75,14 @@ export const ETIQUETA_TALLA_CORTA: Record<string, string> = {
   LARGE: "Large",
 };
 
+// Bono de puntos (a restar) para el 1º/2º/3º de la clasificación GENERAL de
+// una jornada (combinando todas las modalidades de ese nivel/categoría
+// disputadas ese día) — confirmado por David: solo afecta a la general de
+// la jornada, no al podio de cada modalidad por separado, y se resta tanto
+// de los puntos de esa jornada como, en consecuencia, de la clasificación
+// de temporada. Índice 0 = 1er puesto, índice 1 = 2º, índice 2 = 3º.
+export const BONOS_PODIO_JORNADA: number[] = [-8, -6, -2];
+
 export const ETIQUETA_CALIFICACION: Record<string, string> = {
   EXCELENTE: "Excelente",
   MUY_BUENO: "Muy Bueno",

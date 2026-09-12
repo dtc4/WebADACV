@@ -4,8 +4,8 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { categoriaDeTalla } from "@/lib/rules/categorias";
-import { nivelValidoParaTalla, TALLAS_CON_GRADO } from "@/lib/constants";
-import type { NivelCompeticion, CategoriaTalla, Talla } from "@prisma/client";
+import { nivelValidoParaTalla, TALLAS_CON_GRADO, BONOS_PODIO_JORNADA } from "@/lib/constants";
+import type { NivelCompeticion, CategoriaTalla, Talla, Modalidad } from "@prisma/client";
 
 async function requireSession() {
   return getSession();
@@ -48,23 +48,38 @@ export async function asegurarClasificacionesTemporadaAction(temporadaId: string
 
 type ClasificacionRef = { id: string; temporadaId: string; nivel: NivelCompeticion; categoria: CategoriaTalla };
 
+type ParametrosPenalizacion = {
+  temporadaId: string;
+  nivel: NivelCompeticion;
+  categoria: CategoriaTalla;
+  /** Si se indica, solo cuenta esa modalidad (para el ranking por
+   * modalidad de una jornada). Si se omite, cuenta todas — esa suma ES la
+   * "general" (de temporada, o de una jornada si se combina con
+   * `soloJornadaId`). */
+  modalidad?: Modalidad;
+  /** Si se indica, solo cuenta lo disputado en esa jornada concreta (para
+   * el ranking de esa jornada). Si se omite, cuenta toda la temporada. */
+  soloJornadaId?: string;
+};
+
 /**
- * Calcula el ranking (sin escribir nada) de una clasificación: la suma de
- * `penalizacionTotal` de todos los resultados PUBLICADOS de los binomios
- * de ese nivel/categoría en la temporada (menor penalización acumulada =
- * mejor puesto), tal y como sugiere el reglamento al fijar el tope de
- * "penalización final ≤ 500 puntos" para poder ascender. Como no filtra
- * por modalidad, un binomio que compite en Agility Standard Y Jumping en
- * el mismo nivel/categoría suma automáticamente las dos — esa suma ES la
- * "clasificación general" de ese nivel/categoría.
+ * Calcula (sin escribir nada) la penalización acumulada por binomio: la
+ * suma de `penalizacionTotal` de los resultados PUBLICADOS que cumplen los
+ * filtros indicados (menor penalización acumulada = mejor puesto), tal y
+ * como sugiere el reglamento al fijar el tope de "penalización final ≤ 500
+ * puntos" para poder ascender. Sin `modalidad`, un binomio que compite en
+ * Agility Standard Y Jumping en el mismo nivel/categoría suma
+ * automáticamente las dos — esa suma ES la "general". Con `soloJornadaId`
+ * se limita a una jornada (ranking de jornada); sin él, a toda la
+ * temporada (ranking de temporada).
  *
  * Además de los resultados reales, se cuentan "no presentados"
  * automáticos: según indicó David, la inmensa mayoría de no presentados
  * no son binomios que se inscriben y luego no vienen, sino binomios del
  * campeonato que directamente no se inscriben en la jornada porque no
  * van a esa prueba — y no tiene sentido pedirle a secretaría que los
- * marque uno a uno. Así que, para cada manga (Competicion) de esta
- * altura+grado que se disputó en una jornada ya publicada, cualquier
+ * marque uno a uno. Así que, para cada manga (Competicion) que entra en
+ * los filtros y que se disputó en una jornada ya publicada, cualquier
  * binomio activo de esa misma altura+grado que NO estuviera inscrito en
  * esa jornada (y que no tenga ya un resultado real en esa manga) se
  * cuenta automáticamente como no presentado, con la penalización fija de
@@ -79,19 +94,25 @@ type ClasificacionRef = { id: string; temporadaId: string; nivel: NivelCompetici
  * reglamento de ADACV antes de usarse como criterio oficial de ascenso o
  * descenso.
  */
-async function calcularRankingClasificacion(clasificacion: ClasificacionRef) {
+async function calcularPenalizacionesPorBinomio(
+  params: ParametrosPenalizacion
+): Promise<Map<string, { puntos: number; pruebas: number }>> {
   // Tallas que pertenecen a esta categoría agrupada.
   const tallasDeCategoria = (["MINI1", "MINI2", "MEDIA", "MAXI", "LARGE"] as const).filter(
-    (t) => categoriaDeTalla(t) === clasificacion.categoria
+    (t) => categoriaDeTalla(t) === params.categoria
   );
 
   const resultados = await prisma.resultado.findMany({
     where: {
       publicado: true,
       competicion: {
-        nivel: clasificacion.nivel,
+        nivel: params.nivel,
         talla: { in: tallasDeCategoria },
-        jornada: { temporadaId: clasificacion.temporadaId },
+        ...(params.modalidad ? { modalidad: params.modalidad } : {}),
+        jornada: {
+          temporadaId: params.temporadaId,
+          ...(params.soloJornadaId ? { id: params.soloJornadaId } : {}),
+        },
       },
     },
     select: { binomioId: true, penalizacionTotal: true, competicionId: true },
@@ -110,9 +131,14 @@ async function calcularRankingClasificacion(clasificacion: ClasificacionRef) {
   // --- No presentados automáticos (binomios que ni se inscriben) --------
   const competicionesDeCategoria = (await prisma.competicion.findMany({
     where: {
-      nivel: clasificacion.nivel,
+      nivel: params.nivel,
       talla: { in: tallasDeCategoria },
-      jornada: { temporadaId: clasificacion.temporadaId, estado: "PUBLICADA" },
+      ...(params.modalidad ? { modalidad: params.modalidad } : {}),
+      jornada: {
+        temporadaId: params.temporadaId,
+        estado: "PUBLICADA",
+        ...(params.soloJornadaId ? { id: params.soloJornadaId } : {}),
+      },
     },
     select: { id: true, jornadaId: true, modalidad: true, talla: true, nivel: true },
   })) as { id: string; jornadaId: string; modalidad: string; talla: string; nivel: string }[];
@@ -130,7 +156,7 @@ async function calcularRankingClasificacion(clasificacion: ClasificacionRef) {
         select: { id: true, perro: { select: { nivel: true, talla: true } } },
       }),
       prisma.reglaModalidad.findMany({
-        where: { temporadaId: clasificacion.temporadaId },
+        where: { temporadaId: params.temporadaId },
         select: { modalidad: true, penalizacionNoPresentado: true },
       }),
     ]);
@@ -190,6 +216,43 @@ async function calcularRankingClasificacion(clasificacion: ClasificacionRef) {
         acumulado.set(binomio.id, actual);
       }
     }
+  }
+
+  return acumulado;
+}
+
+/** Calcula el ranking (sin escribir nada) de la clasificación de TEMPORADA
+ * de un nivel/categoría: la penalización acumulada de toda la temporada
+ * (ver `calcularPenalizacionesPorBinomio`) menos el bono de podio de la
+ * general de cada jornada ya publicada de ese mismo nivel/categoría (ver
+ * `BONOS_PODIO_JORNADA` y `ClasificacionJornadaEntrada.bonus`): el que
+ * queda 1º/2º/3º de la general de una jornada se lleva -8/-6/-2 puntos
+ * también en la clasificación de temporada. */
+async function calcularRankingClasificacion(clasificacion: ClasificacionRef) {
+  const acumulado = await calcularPenalizacionesPorBinomio({
+    temporadaId: clasificacion.temporadaId,
+    nivel: clasificacion.nivel,
+    categoria: clasificacion.categoria,
+  });
+
+  const bonos = (await prisma.clasificacionJornadaEntrada.findMany({
+    where: {
+      clasificacionJornada: {
+        agrupacion: "GENERAL",
+        nivel: clasificacion.nivel,
+        categoria: clasificacion.categoria,
+        jornada: { temporadaId: clasificacion.temporadaId, estado: "PUBLICADA" },
+      },
+    },
+    select: { binomioId: true, bonus: true },
+  })) as { binomioId: string; bonus: number }[];
+
+  for (const b of bonos) {
+    if (!b.bonus) continue;
+    const actual = acumulado.get(b.binomioId);
+    // El bono solo tiene sentido si el binomio ya suma puntos de esa
+    // jornada (siempre debería ser así: para tener bono tuvo que competir).
+    if (actual) actual.puntos += b.bonus; // bonus ya viene en negativo
   }
 
   return Array.from(acumulado.entries())
@@ -288,19 +351,127 @@ async function recalcularYPublicarClasificacion(
   });
 }
 
-/** Recalcula y publica automáticamente la clasificación (nivel × categoría
- * de talla) a la que pertenece una manga (Competicion) concreta — se
- * llama al publicar o despublicar los resultados de esa manga. Como la
- * clasificación general suma todas las modalidades del mismo
- * nivel/categoría, esto también actualiza la general en cuanto se
- * publican, por ejemplo, tanto Standard como Jumping de un mismo nivel. */
+type EntradaClasificacionJornada = { binomioId: string; puntos: number; pruebas: number; bonus: number };
+
+/** Escribe (o, si el ranking está vacío, borra) la fila ClasificacionJornada
+ * de una agrupación concreta (una modalidad, o "GENERAL") de una jornada,
+ * junto con sus entradas — mismo patrón de "borrar y recrear" que
+ * `guardarRankingClasificacion`, pero para la clasificación de jornada. Se
+ * borra en vez de dejarla vacía cuando ya no hay resultados publicados que
+ * la respalden (p. ej. al despublicar una manga), para no dejar clasificaciones
+ * fantasma con cero entradas dando vueltas por la web. */
+async function guardarClasificacionJornada(
+  jornadaId: string,
+  nivel: NivelCompeticion,
+  categoria: CategoriaTalla,
+  agrupacion: string,
+  ranking: EntradaClasificacionJornada[]
+) {
+  if (ranking.length === 0) {
+    await prisma.clasificacionJornada.deleteMany({
+      where: { jornadaId, nivel, categoria, agrupacion },
+    });
+    return;
+  }
+
+  const clasificacion = await prisma.clasificacionJornada.upsert({
+    where: { jornadaId_nivel_categoria_agrupacion: { jornadaId, nivel, categoria, agrupacion } },
+    create: { jornadaId, nivel, categoria, agrupacion, estado: "PUBLICADA", publicadaEn: new Date() },
+    update: { estado: "PUBLICADA", publicadaEn: new Date(), actualizadaEn: new Date() },
+  });
+
+  await prisma.$transaction([
+    prisma.clasificacionJornadaEntrada.deleteMany({ where: { clasificacionJornadaId: clasificacion.id } }),
+    ...ranking.map((entrada, index) =>
+      prisma.clasificacionJornadaEntrada.create({
+        data: {
+          clasificacionJornadaId: clasificacion.id,
+          binomioId: entrada.binomioId,
+          posicion: index + 1,
+          puntos: entrada.puntos,
+          bonus: entrada.bonus,
+        },
+      })
+    ),
+  ]);
+}
+
+/** Recalcula la clasificación de ESTA jornada para un nivel/categoría
+ * concretos: una fila por cada modalidad disputada ese día en ese
+ * nivel/categoría (solo sirve para saber quién sube al podio de esa
+ * modalidad — trofeo, sin bono de puntos) y una fila "GENERAL" combinando
+ * todas esas modalidades (con el bono de podio -8/-6/-2 para el 1º/2º/3º,
+ * que SÍ se resta también de la clasificación de temporada — ver
+ * `BONOS_PODIO_JORNADA`). Al final recalcula la clasificación de temporada
+ * de ese nivel/categoría para que recoja el bono recién calculado.
+ *
+ * Se llama automáticamente al publicar o despublicar una manga o una
+ * jornada entera: no hace falta esperar a que acabe toda la jornada para
+ * tener la clasificación de esa manga (David: "conforme acabo esa ronda
+ * de esa altura, publico esa clasificación... y automáticamente
+ * calcularemos la clasificación general"). */
+async function recalcularClasificacionJornada(
+  jornadaId: string,
+  temporadaId: string,
+  nivel: NivelCompeticion,
+  categoria: CategoriaTalla
+) {
+  const tallasDeCategoria = (["MINI1", "MINI2", "MEDIA", "MAXI", "LARGE"] as const).filter(
+    (t) => categoriaDeTalla(t) === categoria
+  );
+
+  const competiciones = (await prisma.competicion.findMany({
+    where: { jornadaId, nivel, talla: { in: tallasDeCategoria } },
+    select: { modalidad: true },
+  })) as { modalidad: Modalidad }[];
+  const modalidades = Array.from(new Set(competiciones.map((c) => c.modalidad)));
+
+  for (const modalidad of modalidades) {
+    const acumulado = await calcularPenalizacionesPorBinomio({
+      temporadaId,
+      nivel,
+      categoria,
+      modalidad,
+      soloJornadaId: jornadaId,
+    });
+    const ranking: EntradaClasificacionJornada[] = Array.from(acumulado.entries())
+      .map(([binomioId, datos]) => ({ binomioId, puntos: datos.puntos, pruebas: datos.pruebas, bonus: 0 }))
+      .sort((a, b) => a.puntos - b.puntos);
+    await guardarClasificacionJornada(jornadaId, nivel, categoria, modalidad, ranking);
+  }
+
+  const acumuladoGeneral = await calcularPenalizacionesPorBinomio({
+    temporadaId,
+    nivel,
+    categoria,
+    soloJornadaId: jornadaId,
+  });
+  const rankingGeneral: EntradaClasificacionJornada[] = Array.from(acumuladoGeneral.entries())
+    .map(([binomioId, datos]) => ({ binomioId, puntos: datos.puntos, pruebas: datos.pruebas, bonus: 0 }))
+    .sort((a, b) => a.puntos - b.puntos)
+    .map((entrada, index) => ({ ...entrada, bonus: BONOS_PODIO_JORNADA[index] ?? 0 }));
+  await guardarClasificacionJornada(jornadaId, nivel, categoria, "GENERAL", rankingGeneral);
+
+  // La clasificación de temporada tiene que recoger el bono que se acaba
+  // de escribir arriba.
+  await recalcularYPublicarClasificacion(temporadaId, nivel, categoria);
+}
+
+/** Recalcula y publica automáticamente la clasificación de jornada Y la de
+ * temporada (nivel × categoría de talla) a la que pertenece una manga
+ * (Competicion) concreta — se llama al publicar o despublicar los
+ * resultados de esa manga. Como la clasificación general suma todas las
+ * modalidades del mismo nivel/categoría, esto también actualiza la
+ * general en cuanto se publican, por ejemplo, tanto Standard como Jumping
+ * de un mismo nivel. */
 export async function recalcularClasificacionDeCompeticionAction(competicionId: string) {
   await requireSession();
   const competicion = await prisma.competicion.findUniqueOrThrow({
     where: { id: competicionId },
     include: { jornada: { select: { temporadaId: true } } },
   });
-  await recalcularYPublicarClasificacion(
+  await recalcularClasificacionJornada(
+    competicion.jornadaId,
     competicion.jornada.temporadaId,
     competicion.nivel,
     categoriaDeTalla(competicion.talla)
@@ -326,7 +497,7 @@ export async function recalcularClasificacionesDeJornadaAction(jornadaId: string
 
   for (const combo of combos) {
     const [nivel, categoria] = combo.split(":") as [NivelCompeticion, CategoriaTalla];
-    await recalcularYPublicarClasificacion(jornada.temporadaId, nivel, categoria);
+    await recalcularClasificacionJornada(jornadaId, jornada.temporadaId, nivel, categoria);
   }
 
   revalidatePath("/backoffice/clasificaciones");

@@ -58,6 +58,27 @@ export async function getJornadaPublicaConResultados(jornadaId: string) {
   return jornada;
 }
 
+/** Clasificaciones de UNA jornada concreta (además de la de temporada):
+ * una fila por cada modalidad disputada ese día en cada nivel/categoría
+ * (solo trofeo, sin bono de puntos) y una fila "GENERAL" combinándolas
+ * (con el bono -8/-6/-2 del 1º/2º/3º — ver `recalcularClasificacionJornada`
+ * en `src/app/actions/clasificaciones.ts`). Solo se leen las PUBLICADAS:
+ * se recalculan y publican automáticamente en cuanto secretaría publica
+ * los resultados de una manga, así que no hay estado intermedio que
+ * mostrar aquí. */
+export function getClasificacionesJornada(jornadaId: string) {
+  return prisma.clasificacionJornada.findMany({
+    where: { jornadaId, estado: "PUBLICADA" },
+    include: {
+      entradas: {
+        include: { binomio: { include: { guia: true, perro: true, club: true } } },
+        orderBy: { posicion: "asc" },
+      },
+    },
+    orderBy: [{ nivel: "asc" }, { categoria: "asc" }, { agrupacion: "asc" }],
+  });
+}
+
 export function getClasificacionPublicada(
   temporadaId: string,
   nivel: NivelCompeticion,
